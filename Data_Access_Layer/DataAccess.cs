@@ -28,5 +28,11 @@ namespace Data_Access_Layer
         {
             return new ValidStudentRepo(db);
         }
+
+        public static IRepo<Student, int> GetStudentDataAccess()
+        {
+
+            return new StudentRepo(db);
+        }
     }
 }

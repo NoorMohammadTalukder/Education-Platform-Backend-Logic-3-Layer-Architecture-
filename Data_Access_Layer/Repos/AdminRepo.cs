@@ -20,15 +20,24 @@ namespace Data_Access_Layer.Repos
         public bool Create(Admin obj)
         {
             db.Admins.Add(obj);
+            db.SaveChanges();
             return true;
         }
 
         public bool Delete(int id)
         {
-            var admin = db.Admins.FirstOrDefault(e=>e.Id==id);
-            db.Admins.Remove(admin);
-            return true;
+            try
+            {
+                var admin = db.Admins.FirstOrDefault(e => e.Id == id);
+                db.Admins.Remove(admin);
+                db.SaveChanges();
+                return true;
 
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         public List<Admin> Get()
@@ -49,6 +58,7 @@ namespace Data_Access_Layer.Repos
         {
             var admin=(from i in db.Admins where i.Id==obj.Id select i).FirstOrDefault();
             db.Entry(admin).CurrentValues.SetValues(obj);
+            db.SaveChanges();
             return true;
         }
     }

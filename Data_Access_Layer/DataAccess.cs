@@ -18,5 +18,10 @@ namespace Data_Access_Layer
             
             return new AdminRepo(db);
         }
+
+        public static IRepo<Institution,int> GetInstitutionDataAccess()
+        {
+            return new InstitutionRepo(db);
+        }
     }
 }

@@ -104,5 +104,56 @@ namespace Education_Platform_Backend_Logic.Controllers
             return Request.CreateResponse(data ? true : false);
 
         }
+
+
+        //-----------------------------------------------------------
+        //------------------Valid Student Work Started-----------------
+        //-----------------------------------------------------------
+
+        [Route("api/admin/all/validStudent")]
+        [HttpGet]
+        public HttpResponseMessage GetValidStudent()
+        {
+            var data = AdminService.GetValidStudent();
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+
+        }
+
+        [Route("api/admin/single/validStudent/{id}")]
+        [HttpGet]
+        public HttpResponseMessage GetSingleValidStudent(int id)
+        {
+            var data = AdminService.GetSingleValidStudent(id);
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+
+        }
+
+        [Route("api/admin/add/validStudent")]
+        [HttpPost]
+        public HttpResponseMessage CreateValidStudent(ValidStudentModel obj)
+        {
+            bool data = AdminService.CreateValidStudent(obj);
+            return Request.CreateResponse(data ? true : false);
+
+        }
+
+
+        [Route("api/admin/update/validStudent")]
+        [HttpPost]
+        public HttpResponseMessage UpdateValidStudent(ValidStudentModel obj)
+        {
+            bool data = AdminService.UpdateValidStudent(obj);
+            return Request.CreateResponse(data ? true : false);
+
+        }
+
+        [Route("api/admin/delete/validStudent/{id}")]
+        [HttpGet]
+        public HttpResponseMessage DeleteValidStudent(int id)
+        {
+            bool data = AdminService.DeleteValidStudent(id);
+            return Request.CreateResponse(data ? true : false);
+
+        }
     }
 }

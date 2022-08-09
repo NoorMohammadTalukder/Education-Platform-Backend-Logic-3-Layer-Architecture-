@@ -150,5 +150,66 @@ namespace Business_Logic_Layer.Services
         }
 
 
+        //-----------------------------------------------------------
+        //------------------Valid Student Work Started-----------------
+        //-----------------------------------------------------------
+
+        public static List<ValidStudentModel> GetValidStudent()
+        {
+            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<ValidStudent, ValidStudentModel>())).Map<List<ValidStudentModel>>(DataAccess.GetValidStudentDataAccess().Get());
+            return data;
+        }
+
+        public static ValidStudentModel GetSingleValidStudent(int id)
+        {
+            var config = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<ValidStudent, ValidStudentModel>()));
+            var data = config.Map<ValidStudentModel>(DataAccess.GetValidStudentDataAccess().GetId(id));
+            return data;
+        }
+
+        public static bool CreateValidStudent(ValidStudentModel obj)
+        {
+            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<ValidStudentModel, ValidStudent>())).Map<ValidStudent>(obj);
+
+
+            try
+            {
+                DataAccess.GetValidStudentDataAccess().Create(data);
+
+                return true;
+
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
+
+        public static bool UpdateValidStudent(ValidStudentModel obj)
+        {
+            
+            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<ValidStudentModel, ValidStudent > ())).Map<ValidStudent>(obj);
+
+            try
+            {
+                DataAccess.GetValidStudentDataAccess().Update(data);
+
+                return true;
+
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool DeleteValidStudent(int id)
+        {
+            DataAccess.GetValidStudentDataAccess().Delete(id);
+            return true;
+        }
+
+
     }
 }

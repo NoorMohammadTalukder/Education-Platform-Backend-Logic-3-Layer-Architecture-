@@ -1,0 +1,9 @@
+D:\.net practice\Education Platform Backend Logic\Dummy_Model_Layer\bin\Debug\Dummy_Model_Layer.dll
+D:\.net practice\Education Platform Backend Logic\Dummy_Model_Layer\bin\Debug\Dummy_Model_Layer.pdb
+D:\.net practice\Education Platform Backend Logic\Dummy_Model_Layer\bin\Debug\AutoMapper.dll
+D:\.net practice\Education Platform Backend Logic\Dummy_Model_Layer\bin\Debug\AutoMapper.xml
+D:\.net practice\Education Platform Backend Logic\Dummy_Model_Layer\obj\Debug\Dummy_Model_Layer.csproj.AssemblyReference.cache
+D:\.net practice\Education Platform Backend Logic\Dummy_Model_Layer\obj\Debug\Dummy_Model_Layer.csproj.CoreCompileInputs.cache
+D:\.net practice\Education Platform Backend Logic\Dummy_Model_Layer\obj\Debug\Dummy_Model_Layer.csproj.CopyComplete
+D:\.net practice\Education Platform Backend Logic\Dummy_Model_Layer\obj\Debug\Dummy_Model_Layer.dll
+D:\.net practice\Education Platform Backend Logic\Dummy_Model_Layer\obj\Debug\Dummy_Model_Layer.pdb

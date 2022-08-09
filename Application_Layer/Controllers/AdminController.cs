@@ -68,5 +68,41 @@ namespace Education_Platform_Backend_Logic.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, data);
 
         }
+
+        [Route("api/admin/single/institution/{id}")]
+        [HttpGet]
+        public HttpResponseMessage GetSingleInstitution(int id)
+        {
+            var data = AdminService.GetSingleInstitution(id);
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+
+        }
+
+        [Route("api/admin/add/institution")]
+        [HttpPost]
+        public HttpResponseMessage CreateInstitution(InstitutionModel obj)
+        {
+            bool data = AdminService.CreateInstitution(obj);
+            return Request.CreateResponse(data ? true : false);
+
+        }
+
+        [Route("api/admin/update/institution")]
+        [HttpPost]
+        public HttpResponseMessage UpdateInstitution(InstitutionModel obj)
+        {
+            bool data = AdminService.UpdateInstitution(obj);
+            return Request.CreateResponse(data ? true : false);
+
+        }
+
+        [Route("api/admin/delete/Institution/{id}")]
+        [HttpGet]
+        public HttpResponseMessage DeleteInstitution(int id)
+        {
+            bool data = AdminService.DeleteInstitution(id);
+            return Request.CreateResponse(data ? true : false);
+
+        }
     }
 }

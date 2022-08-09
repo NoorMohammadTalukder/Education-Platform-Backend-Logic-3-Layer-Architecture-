@@ -98,5 +98,57 @@ namespace Business_Logic_Layer.Services
             return data;
         }
 
+        public static InstitutionModel GetSingleInstitution(int id)
+        {
+            var config = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<Institution, InstitutionModel>()));
+            var data = config.Map<InstitutionModel>(DataAccess.GetInstitutionDataAccess().GetId(id));
+            return data;
+        }
+
+        public static bool CreateInstitution(InstitutionModel obj)
+        {
+            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<InstitutionModel, Institution>())).Map<Institution>(obj);
+            
+
+            try
+            {
+                DataAccess.GetInstitutionDataAccess().Create(data);
+
+                return true;
+
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
+
+        public static bool UpdateInstitution(InstitutionModel obj)
+        {
+            //var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<AdminModel, Admin>())).Map<Admin>(obj);
+            // var data = config.Map<Admin>(obj);
+            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<InstitutionModel, Institution>())).Map<Institution>(obj);
+
+            try
+            {
+                DataAccess.GetInstitutionDataAccess().Update(data);
+
+                return true;
+
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool DeleteInstitution(int id)
+        {
+            DataAccess.GetInstitutionDataAccess().Delete(id);
+            return true;
+        }
+
+
     }
 }

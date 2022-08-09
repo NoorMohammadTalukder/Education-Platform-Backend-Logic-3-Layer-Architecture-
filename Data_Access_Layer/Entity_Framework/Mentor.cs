@@ -22,7 +22,6 @@ namespace Data_Access_Layer.Entity_Framework
             this.Counselings = new HashSet<Counseling>();
             this.CourseModules = new HashSet<CourseModule>();
             this.Courses = new HashSet<Cours>();
-            this.Notices = new HashSet<Notice>();
             this.Ratings = new HashSet<Rating>();
             this.Results = new HashSet<Result>();
             this.Reviewstudents = new HashSet<Reviewstudent>();
@@ -49,8 +48,6 @@ namespace Data_Access_Layer.Entity_Framework
         public virtual ICollection<CourseModule> CourseModules { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cours> Courses { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Notice> Notices { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Rating> Ratings { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

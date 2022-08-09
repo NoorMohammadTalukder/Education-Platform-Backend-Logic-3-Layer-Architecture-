@@ -118,7 +118,6 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CourseId" Type="int" />
-    <Property Name="AnnouncedBy" Type="varchar(max)" />
     <Property Name="InstitutionId" Type="int" />
     <Property Name="Details" Type="varchar(max)" />
     <Property Name="Date" Type="varchar(max)" />
@@ -321,30 +320,6 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Courses">
-        <PropertyRef Name="MentorId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Notices_Institutions">
-    <End Role="Institutions" Type="Self.Institutions" Multiplicity="1" />
-    <End Role="Notices" Type="Self.Notices" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="Institutions">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Notices">
-        <PropertyRef Name="Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Notices_Mentors">
-    <End Role="Mentors" Type="Self.Mentors" Multiplicity="0..1" />
-    <End Role="Notices" Type="Self.Notices" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Mentors">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Notices">
         <PropertyRef Name="MentorId" />
       </Dependent>
     </ReferentialConstraint>
@@ -598,14 +573,6 @@
     <AssociationSet Name="FK_Courses_Mentors" Association="Self.FK_Courses_Mentors">
       <End Role="Mentors" EntitySet="Mentors" />
       <End Role="Courses" EntitySet="Courses" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Notices_Institutions" Association="Self.FK_Notices_Institutions">
-      <End Role="Institutions" EntitySet="Institutions" />
-      <End Role="Notices" EntitySet="Notices" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Notices_Mentors" Association="Self.FK_Notices_Mentors">
-      <End Role="Mentors" EntitySet="Mentors" />
-      <End Role="Notices" EntitySet="Notices" />
     </AssociationSet>
     <AssociationSet Name="FK_Ratings_Courses" Association="Self.FK_Ratings_Courses">
       <End Role="Courses" EntitySet="Courses" />

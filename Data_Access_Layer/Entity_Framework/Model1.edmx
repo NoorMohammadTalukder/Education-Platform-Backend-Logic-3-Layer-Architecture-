@@ -123,7 +123,6 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CourseId" Type="int" />
-          <Property Name="AnnouncedBy" Type="varchar(max)" />
           <Property Name="InstitutionId" Type="int" />
           <Property Name="Details" Type="varchar(max)" />
           <Property Name="Date" Type="varchar(max)" />
@@ -326,30 +325,6 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Courses">
-              <PropertyRef Name="MentorId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Notices_Institutions">
-          <End Role="Institutions" Type="Self.Institutions" Multiplicity="1" />
-          <End Role="Notices" Type="Self.Notices" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Institutions">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Notices">
-              <PropertyRef Name="Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Notices_Mentors">
-          <End Role="Mentors" Type="Self.Mentors" Multiplicity="0..1" />
-          <End Role="Notices" Type="Self.Notices" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Mentors">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Notices">
               <PropertyRef Name="MentorId" />
             </Dependent>
           </ReferentialConstraint>
@@ -604,14 +579,6 @@
             <End Role="Mentors" EntitySet="Mentors" />
             <End Role="Courses" EntitySet="Courses" />
           </AssociationSet>
-          <AssociationSet Name="FK_Notices_Institutions" Association="Self.FK_Notices_Institutions">
-            <End Role="Institutions" EntitySet="Institutions" />
-            <End Role="Notices" EntitySet="Notices" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Notices_Mentors" Association="Self.FK_Notices_Mentors">
-            <End Role="Mentors" EntitySet="Mentors" />
-            <End Role="Notices" EntitySet="Notices" />
-          </AssociationSet>
           <AssociationSet Name="FK_Ratings_Courses" Association="Self.FK_Ratings_Courses">
             <End Role="Courses" EntitySet="Courses" />
             <End Role="Ratings" EntitySet="Ratings" />
@@ -797,7 +764,6 @@
           <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Certificates" Relationship="Self.FK_Certificates_Institutions" FromRole="Institutions" ToRole="Certificates" />
           <NavigationProperty Name="Courses" Relationship="Self.FK_Courses_Institutions" FromRole="Institutions" ToRole="Courses" />
-          <NavigationProperty Name="Notice" Relationship="Self.FK_Notices_Institutions" FromRole="Institutions" ToRole="Notices" />
           <NavigationProperty Name="Results" Relationship="Self.FK_Results_Institutions" FromRole="Institutions" ToRole="Results" />
           <NavigationProperty Name="Transaction" Relationship="Self.FK_Transactions_Institutions" FromRole="Institutions" ToRole="Transactions" />
         </EntityType>
@@ -820,7 +786,6 @@
           <NavigationProperty Name="Counselings" Relationship="Self.FK_Counselings_Mentors" FromRole="Mentors" ToRole="Counselings" />
           <NavigationProperty Name="CourseModules" Relationship="Self.FK_CourseModule_Mentors" FromRole="Mentors" ToRole="CourseModule" />
           <NavigationProperty Name="Courses" Relationship="Self.FK_Courses_Mentors" FromRole="Mentors" ToRole="Courses" />
-          <NavigationProperty Name="Notices" Relationship="Self.FK_Notices_Mentors" FromRole="Mentors" ToRole="Notices" />
           <NavigationProperty Name="Ratings" Relationship="Self.FK_Ratings_Mentors" FromRole="Mentors" ToRole="Ratings" />
           <NavigationProperty Name="Results" Relationship="Self.FK_Results_Mentors" FromRole="Mentors" ToRole="Results" />
           <NavigationProperty Name="Reviewstudents" Relationship="Self.FK_Reviewstudents_Mentors" FromRole="Mentors" ToRole="Reviewstudents" />
@@ -831,13 +796,10 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CourseId" Type="Int32" />
-          <Property Name="AnnouncedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="InstitutionId" Type="Int32" />
           <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Date" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="MentorId" Type="Int32" />
-          <NavigationProperty Name="Institution" Relationship="Self.FK_Notices_Institutions" FromRole="Notices" ToRole="Institutions" />
-          <NavigationProperty Name="Mentor" Relationship="Self.FK_Notices_Mentors" FromRole="Notices" ToRole="Mentors" />
         </EntityType>
         <EntityType Name="PasswordChangeRequest">
           <Key>
@@ -1135,18 +1097,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Notices_Institutions">
-          <End Role="Institutions" Type="Self.Institution" Multiplicity="1" />
-          <End Role="Notices" Type="Self.Notice" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Institutions">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Notices">
-              <PropertyRef Name="Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Results_Institutions">
           <End Role="Institutions" Type="Self.Institution" Multiplicity="0..1" />
           <End Role="Results" Type="Self.Result" Multiplicity="*" />
@@ -1168,18 +1118,6 @@
             </Principal>
             <Dependent Role="Transactions">
               <PropertyRef Name="Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Notices_Mentors">
-          <End Role="Mentors" Type="Self.Mentor" Multiplicity="0..1" />
-          <End Role="Notices" Type="Self.Notice" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Mentors">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Notices">
-              <PropertyRef Name="MentorId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1361,10 +1299,6 @@
             <End Role="Courses" EntitySet="Courses" />
             <End Role="ValidStudents" EntitySet="ValidStudents" />
           </AssociationSet>
-          <AssociationSet Name="FK_Notices_Institutions" Association="Self.FK_Notices_Institutions">
-            <End Role="Institutions" EntitySet="Institutions" />
-            <End Role="Notices" EntitySet="Notices" />
-          </AssociationSet>
           <AssociationSet Name="FK_Results_Institutions" Association="Self.FK_Results_Institutions">
             <End Role="Institutions" EntitySet="Institutions" />
             <End Role="Results" EntitySet="Results" />
@@ -1372,10 +1306,6 @@
           <AssociationSet Name="FK_Transactions_Institutions" Association="Self.FK_Transactions_Institutions">
             <End Role="Institutions" EntitySet="Institutions" />
             <End Role="Transactions" EntitySet="Transactions" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Notices_Mentors" Association="Self.FK_Notices_Mentors">
-            <End Role="Mentors" EntitySet="Mentors" />
-            <End Role="Notices" EntitySet="Notices" />
           </AssociationSet>
           <AssociationSet Name="FK_Ratings_Mentors" Association="Self.FK_Ratings_Mentors">
             <End Role="Mentors" EntitySet="Mentors" />
@@ -1542,7 +1472,6 @@
               <MappingFragment StoreEntitySet="Notices">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CourseId" ColumnName="CourseId" />
-                <ScalarProperty Name="AnnouncedBy" ColumnName="AnnouncedBy" />
                 <ScalarProperty Name="InstitutionId" ColumnName="InstitutionId" />
                 <ScalarProperty Name="Details" ColumnName="Details" />
                 <ScalarProperty Name="Date" ColumnName="Date" />

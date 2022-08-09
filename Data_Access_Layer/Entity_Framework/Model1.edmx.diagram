@@ -4,24 +4,24 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="96de9d5df3334f27a0d1df8a95ff9d1a" Name="Diagram1">
+      <Diagram DiagramId="28b8ea3ad58645b4983c1ed5b9246f91" Name="Diagram1">
         <EntityTypeShape EntityType="Education_Platform_Final_TermModel.Admin" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Education_Platform_Final_TermModel.AnswerScript" Width="1.5" PointX="5.25" PointY="15.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Education_Platform_Final_TermModel.Assignment" Width="1.5" PointX="3" PointY="15.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Education_Platform_Final_TermModel.Certificate" Width="1.5" PointX="8" PointY="18.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Education_Platform_Final_TermModel.Counseling" Width="1.5" PointX="3" PointY="22.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Education_Platform_Final_TermModel.CourseModule" Width="1.5" PointX="3" PointY="25.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Education_Platform_Final_TermModel.Cours" Width="1.5" PointX="8" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Education_Platform_Final_TermModel.Institution" Width="1.5" PointX="5.75" PointY="10.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Education_Platform_Final_TermModel.Mentor" Width="1.5" PointX="0.75" PointY="17.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Education_Platform_Final_TermModel.Notice" Width="1.5" PointX="6" PointY="23.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Education_Platform_Final_TermModel.PasswordChangeRequest" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Education_Platform_Final_TermModel.Rating" Width="1.5" PointX="10.25" PointY="16" IsExpanded="true" />
-        <EntityTypeShape EntityType="Education_Platform_Final_TermModel.Result" Width="1.5" PointX="5.25" PointY="18.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Education_Platform_Final_TermModel.Reviewstudent" Width="1.5" PointX="13.25" PointY="16" IsExpanded="true" />
-        <EntityTypeShape EntityType="Education_Platform_Final_TermModel.Student" Width="1.5" PointX="8" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Education_Platform_Final_TermModel.Transaction" Width="1.5" PointX="10.25" PointY="12.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Education_Platform_Final_TermModel.ValidStudent" Width="1.5" PointX="13.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Education_Platform_Final_TermModel.AnswerScript" Width="1.5" PointX="5.25" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Education_Platform_Final_TermModel.Assignment" Width="1.5" PointX="3" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Education_Platform_Final_TermModel.Certificate" Width="1.5" PointX="8" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Education_Platform_Final_TermModel.Counseling" Width="1.5" PointX="3" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Education_Platform_Final_TermModel.CourseModule" Width="1.5" PointX="3" PointY="23.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Education_Platform_Final_TermModel.Cours" Width="1.5" PointX="8" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Education_Platform_Final_TermModel.Institution" Width="1.5" PointX="5.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Education_Platform_Final_TermModel.Mentor" Width="1.5" PointX="0.75" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Education_Platform_Final_TermModel.Notice" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Education_Platform_Final_TermModel.PasswordChangeRequest" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Education_Platform_Final_TermModel.Rating" Width="1.5" PointX="10.25" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="Education_Platform_Final_TermModel.Result" Width="1.5" PointX="5.25" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Education_Platform_Final_TermModel.Reviewstudent" Width="1.5" PointX="13.25" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="Education_Platform_Final_TermModel.Student" Width="1.5" PointX="8" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Education_Platform_Final_TermModel.Transaction" Width="1.5" PointX="10.25" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Education_Platform_Final_TermModel.ValidStudent" Width="1.5" PointX="13.25" PointY="10.875" IsExpanded="true" />
         <AssociationConnector Association="Education_Platform_Final_TermModel.FK_AnswerScripts_Assignments" ManuallyRouted="false" />
         <AssociationConnector Association="Education_Platform_Final_TermModel.FK_AnswerScripts_Students" ManuallyRouted="false" />
         <AssociationConnector Association="Education_Platform_Final_TermModel.FK_Assignments_Mentors" ManuallyRouted="false" />
@@ -38,10 +38,8 @@
         <AssociationConnector Association="Education_Platform_Final_TermModel.FK_Reviewstudents_Courses" ManuallyRouted="false" />
         <AssociationConnector Association="Education_Platform_Final_TermModel.FK_Transactions_Courses" ManuallyRouted="false" />
         <AssociationConnector Association="Education_Platform_Final_TermModel.FK_ValidStudents_Courses" ManuallyRouted="false" />
-        <AssociationConnector Association="Education_Platform_Final_TermModel.FK_Notices_Institutions" ManuallyRouted="false" />
         <AssociationConnector Association="Education_Platform_Final_TermModel.FK_Results_Institutions" ManuallyRouted="false" />
         <AssociationConnector Association="Education_Platform_Final_TermModel.FK_Transactions_Institutions" ManuallyRouted="false" />
-        <AssociationConnector Association="Education_Platform_Final_TermModel.FK_Notices_Mentors" ManuallyRouted="false" />
         <AssociationConnector Association="Education_Platform_Final_TermModel.FK_Ratings_Mentors" ManuallyRouted="false" />
         <AssociationConnector Association="Education_Platform_Final_TermModel.FK_Results_Mentors" ManuallyRouted="false" />
         <AssociationConnector Association="Education_Platform_Final_TermModel.FK_Reviewstudents_Mentors" ManuallyRouted="false" />

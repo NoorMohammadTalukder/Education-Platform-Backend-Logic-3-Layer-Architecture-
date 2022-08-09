@@ -29,10 +29,26 @@ namespace Data_Access_Layer
             return new ValidStudentRepo(db);
         }
 
+        public static IRepo<Mentor, int> GetMentorDataAccess()
+        {
+
+            return new MentorRepo(db);
+        }
         public static IRepo<Student, int> GetStudentDataAccess()
         {
 
             return new StudentRepo(db);
+        }
+        public static IRepo<Assignment, int> GetAssignmentDataAccess()
+        {
+
+            return new AssignmentRepo(db);
+        }
+        
+      
+        public static IRepo<Notice, int> GetNoticeDataAccess()
+        {
+            return new NoticeRepo(db);
         }
     }
 }

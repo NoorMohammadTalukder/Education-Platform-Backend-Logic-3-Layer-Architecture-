@@ -16,13 +16,9 @@ namespace Data_Access_Layer.Entity_Framework
     {
         public int Id { get; set; }
         public Nullable<int> CourseId { get; set; }
-        public string AnnouncedBy { get; set; }
         public Nullable<int> InstitutionId { get; set; }
         public string Details { get; set; }
         public string Date { get; set; }
         public Nullable<int> MentorId { get; set; }
-    
-        public virtual Institution Institution { get; set; }
-        public virtual Mentor Mentor { get; set; }
     }
 }

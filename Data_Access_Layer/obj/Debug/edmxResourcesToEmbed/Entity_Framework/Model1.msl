@@ -127,7 +127,6 @@
         <MappingFragment StoreEntitySet="Notices">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="CourseId" ColumnName="CourseId" />
-          <ScalarProperty Name="AnnouncedBy" ColumnName="AnnouncedBy" />
           <ScalarProperty Name="InstitutionId" ColumnName="InstitutionId" />
           <ScalarProperty Name="Details" ColumnName="Details" />
           <ScalarProperty Name="Date" ColumnName="Date" />

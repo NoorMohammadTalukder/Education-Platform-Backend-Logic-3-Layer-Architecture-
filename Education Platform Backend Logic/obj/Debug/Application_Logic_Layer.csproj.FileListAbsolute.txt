@@ -57,3 +57,7 @@ D:\.net practice\Education Platform Backend Logic\Education Platform Backend Log
 D:\.net practice\Education Platform Backend Logic\Education Platform Backend Logic\obj\Debug\Education Platform Backend Logic.pdb
 D:\.net practice\Education Platform Backend Logic\Education Platform Backend Logic\bin\EntityFramework.SqlServer.dll
 D:\.net practice\Education Platform Backend Logic\Education Platform Backend Logic\bin\EntityFramework.SqlServer.xml
+D:\.net practice\Education Platform Backend Logic\Education Platform Backend Logic\bin\System.Web.Cors.dll
+D:\.net practice\Education Platform Backend Logic\Education Platform Backend Logic\bin\System.Web.Http.Cors.dll
+D:\.net practice\Education Platform Backend Logic\Education Platform Backend Logic\bin\Business_Logic_Layer.dll.config
+D:\.net practice\Education Platform Backend Logic\Education Platform Backend Logic\bin\System.Web.Http.Cors.xml

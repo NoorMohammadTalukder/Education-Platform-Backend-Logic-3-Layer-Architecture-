@@ -6,9 +6,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Education_Platform_Backend_Logic.Controllers
 {
+    [EnableCors("*", "*", "*")]
     public class AdminController : ApiController
     {
         [Route("api/all/admin")]
@@ -153,6 +155,18 @@ namespace Education_Platform_Backend_Logic.Controllers
         {
             bool data = AdminService.DeleteValidStudent(id);
             return Request.CreateResponse(data ? true : false);
+
+        }
+
+        //-----------------------------------------------------------
+        //------------------Course Work Started-----------------
+        //-----------------------------------------------------------
+        [Route("api/admin/all/courses")]
+        [HttpGet]
+        public HttpResponseMessage GetAllCoursest()
+        {
+            var data = AdminService.GetCourses();
+            return Request.CreateResponse(HttpStatusCode.OK, data);
 
         }
     }

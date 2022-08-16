@@ -210,6 +210,14 @@ namespace Business_Logic_Layer.Services
             return true;
         }
 
+        //-----------------------------------------------------------
+        //------------------Courses Work Started-----------------
+        //-----------------------------------------------------------
+        public static List<CourseModel> GetCourses()
+        {
+            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<Cours, CourseModel>())).Map<List<CourseModel>>(DataAccess.GetCourseDataAccess().Get());
+            return data;
+        }
 
     }
 }

@@ -13,6 +13,7 @@ namespace Education_Platform_Backend_Logic
 
             // Web API routes
             config.MapHttpAttributeRoutes();
+            config.EnableCors();
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

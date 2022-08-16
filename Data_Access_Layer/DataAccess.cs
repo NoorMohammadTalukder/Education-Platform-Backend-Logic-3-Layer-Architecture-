@@ -50,5 +50,10 @@ namespace Data_Access_Layer
         {
             return new NoticeRepo(db);
         }
+
+        public static IRepo<Cours, int> GetCourseDataAccess()
+        {
+            return new CourseRepo(db);
+        }
     }
 }

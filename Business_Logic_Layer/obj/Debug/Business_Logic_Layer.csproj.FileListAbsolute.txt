@@ -14,3 +14,11 @@ D:\.net practice\Education Platform Backend Logic\Business_Logic_Layer\bin\Debug
 D:\.net practice\Education Platform Backend Logic\Business_Logic_Layer\obj\Debug\Business_Logic_Layer.csproj.CopyComplete
 D:\.net practice\Education Platform Backend Logic\Business_Logic_Layer\obj\Debug\Business_Logic_Layer.dll
 D:\.net practice\Education Platform Backend Logic\Business_Logic_Layer\obj\Debug\Business_Logic_Layer.pdb
+D:\.net practice\Education Platform Backend Logic\Business_Logic_Layer\bin\Debug\Business_Logic_Layer.dll.config
+D:\.net practice\Education Platform Backend Logic\Business_Logic_Layer\bin\Debug\System.Net.Http.Formatting.dll
+D:\.net practice\Education Platform Backend Logic\Business_Logic_Layer\bin\Debug\System.Web.Cors.dll
+D:\.net practice\Education Platform Backend Logic\Business_Logic_Layer\bin\Debug\System.Web.Http.Cors.dll
+D:\.net practice\Education Platform Backend Logic\Business_Logic_Layer\bin\Debug\System.Web.Http.dll
+D:\.net practice\Education Platform Backend Logic\Business_Logic_Layer\bin\Debug\System.Net.Http.Formatting.xml
+D:\.net practice\Education Platform Backend Logic\Business_Logic_Layer\bin\Debug\System.Web.Http.xml
+D:\.net practice\Education Platform Backend Logic\Business_Logic_Layer\bin\Debug\System.Web.Http.Cors.xml

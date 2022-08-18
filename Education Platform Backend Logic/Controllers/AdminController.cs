@@ -161,13 +161,152 @@ namespace Education_Platform_Backend_Logic.Controllers
         //-----------------------------------------------------------
         //------------------Course Work Started-----------------
         //-----------------------------------------------------------
+
         [Route("api/admin/all/courses")]
         [HttpGet]
-        public HttpResponseMessage GetAllCoursest()
+        public HttpResponseMessage GetAllCourses()
         {
             var data = AdminService.GetCourses();
             return Request.CreateResponse(HttpStatusCode.OK, data);
 
+        }
+
+        [Route("api/admin/single/course/{id}")]
+        [HttpGet]
+        public HttpResponseMessage GetCourse(int id)
+        {
+            var data = AdminService.GetSingleCourse(id);
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+
+        }
+
+        [Route("api/admin/add/course")]
+        [HttpPost]
+        public HttpResponseMessage CreateCourse(CourseModel obj)
+        {
+            bool data = AdminService.CreateCourse(obj);
+            return Request.CreateResponse(data ? true : false);
+
+        }
+
+
+        [Route("api/admin/update/course")]
+        [HttpPost]
+        public HttpResponseMessage UpdateCourse(CourseModel obj)
+        {
+            bool data = AdminService.UpdateCourse(obj);
+            return Request.CreateResponse(data ? true : false);
+
+        }
+
+        [Route("api/admin/delete/course/{id}")]
+        [HttpGet]
+        public HttpResponseMessage DeketeCourse(int id)
+        {
+            bool data = AdminService.DeleteCourse(id);
+            return Request.CreateResponse(data ? true : false);
+
+        }
+
+        //-----------------------------------------------------------
+        //------------------Course Work Started-----------------
+        //-----------------------------------------------------------
+      
+
+        [Route("api/admin/all/mentor")]
+        [HttpGet]
+        public HttpResponseMessage GetAllMentor()
+        {
+            var data = AdminService.GetMentors();
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+
+        }
+
+        [Route("api/admin/single/mentor/{id}")]
+        [HttpGet]
+        public HttpResponseMessage GetMentor(int id)
+        {
+            var data = AdminService.GetSingleMentor(id);
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+
+        }
+
+        [Route("api/admin/add/mentor")]
+        [HttpPost]
+        public HttpResponseMessage CreateMentor(MentorModel obj)
+        {
+            var data = AdminService.CreateMentor(obj);
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+
+        }
+
+
+        [Route("api/admin/update/mentor")]
+        [HttpPost]
+        public HttpResponseMessage UpdateMentor(MentorModel obj)
+        {
+            var data = AdminService.UpdateMentor(obj);
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+
+        }
+        [Route("api/admin/delete/mentor/{id}")]
+        [HttpGet]
+        public HttpResponseMessage DeleteMentor(int id)
+        {
+            var data = AdminService.DeleteMentor(id);
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+
+        }
+
+        //-----------------------------------------------------------
+        //------------------Student Work Started-----------------
+        //-----------------------------------------------------------
+
+        [Route("api/admin/all/student")]
+        [HttpGet]
+        public HttpResponseMessage GetAllStudents()
+        {
+            var data = AdminService.GetStudents();
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+
+        }
+
+        [Route("api/admin/single/student/{id}")]
+        [HttpGet]
+        public HttpResponseMessage GetStudent(int id)
+        {
+            var data = AdminService.SingleStudent(id);
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+
+        }
+
+
+        [Route("api/admin/create/student")]
+        [HttpPost]
+        public HttpResponseMessage StudentCreate(StudentModel obj)
+        {
+            var data = AdminService.StudentCreate(obj);
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+
+        }
+
+
+        [Route("api/admin/update/student")]
+        [HttpPost]
+        public HttpResponseMessage StudentUpdate(StudentModel obj)
+        {
+            var data = AdminService.UpdateStudent(obj);
+            return Request.CreateResponse(data ? true : false);
+
+        }
+
+
+        [Route("api/admin/delete/student/{id}")]
+        [HttpPost]
+        public HttpResponseMessage StudentDelete(int id)
+        {
+            var data = AdminService.DeleteStudent(id);
+            return Request.CreateResponse(data ? true : false);
         }
     }
 }

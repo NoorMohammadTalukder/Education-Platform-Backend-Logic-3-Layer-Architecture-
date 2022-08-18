@@ -219,5 +219,151 @@ namespace Business_Logic_Layer.Services
             return data;
         }
 
+        public static CourseModel GetSingleCourse(int id)
+        {
+            var config = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<Cours, CourseModel>()));
+            var data = config.Map<CourseModel>(DataAccess.GetCourseDataAccess().GetId(id));
+            return data;
+        }
+
+        public static bool CreateCourse(CourseModel obj)
+        {
+            var data = new Mapper(new MapperConfiguration
+                (cfg => cfg.CreateMap<CourseModel, Cours>())).Map<Cours>(obj);
+
+
+            try
+            {
+                DataAccess.GetCourseDataAccess().Create(data);
+
+                return true;
+
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
+
+        public static bool UpdateCourse(CourseModel obj)
+        {
+
+            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<CourseModel, Cours>())).Map<Cours>(obj);
+
+            try
+            {
+                DataAccess.GetCourseDataAccess().Update(data);
+
+                return true;
+
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool DeleteCourse(int id)
+        {
+            DataAccess.GetCourseDataAccess().Delete(id);
+            return true;
+        }
+
+
+        //-----------------------------------------------------------
+        //------------------Mentor Work Started-----------------
+        //-----------------------------------------------------------
+
+        public static bool CreateMentor(MentorModel obj)
+        {
+            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<MentorModel, Mentor>())).Map<Mentor>(obj);
+            try
+            {
+                DataAccess.GetMentorDataAccess().Create(data);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public static List<MentorModel> GetMentors()
+        {
+            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<Mentor, MentorModel>())).Map<List<MentorModel>>(DataAccess.GetMentorDataAccess().Get());
+            return data;
+
+        }
+        public static bool UpdateMentor(MentorModel obj)
+        {
+            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<MentorModel, Mentor>())).Map<Mentor>(obj);
+            try
+            {
+                DataAccess.GetMentorDataAccess().Update(data);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+         
+        }
+        public static MentorModel GetSingleMentor(int id)
+        {
+            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<Mentor, MentorModel>())).Map<MentorModel>(DataAccess.GetMentorDataAccess().GetId(id));
+            return data;
+        }
+        public static bool DeleteMentor(int id)
+        {
+            DataAccess.GetMentorDataAccess().Delete(id);
+            return true;
+        }
+
+        //-----------------------------------------------------------
+        //------------------Student Work Started-----------------
+        //-----------------------------------------------------------
+
+        public static bool StudentCreate(StudentModel obj)
+        {
+            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<StudentModel, Student>())).Map<Student>(obj);
+
+            DataAccess.GetStudentDataAccess().Create(data);
+            return true;
+
+        }
+        public static List<StudentModel> GetStudents()
+        {
+            var data = new Mapper(new MapperConfiguration
+                (cfg => cfg.CreateMap<Student, StudentModel>())).Map<List<StudentModel>>(DataAccess.GetStudentDataAccess().Get());
+            return data;
+
+        }
+
+        public static StudentModel SingleStudent(int id)
+        {
+            var data = new Mapper(new MapperConfiguration
+                (cfg => cfg.CreateMap<Student, StudentModel>())).Map<StudentModel>(DataAccess.GetStudentDataAccess().GetId(id));
+            return data;
+
+        }
+        public static bool DeleteStudent(int id)
+        {
+
+            DataAccess.GetStudentDataAccess().Delete(id);
+            return true;
+
+
+        }
+        public static bool UpdateStudent(StudentModel obj)
+        {
+            var data = new Mapper
+                (new MapperConfiguration(cfg => cfg.CreateMap<StudentModel, Student>())).Map<Student>(obj);
+
+            DataAccess.GetStudentDataAccess().Update(data);
+            return true;
+
+
+        }
     }
 }

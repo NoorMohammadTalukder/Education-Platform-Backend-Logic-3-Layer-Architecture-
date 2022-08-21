@@ -117,6 +117,7 @@
     <NavigationProperty Name="Courses" Relationship="Self.FK_Courses_Institutions" FromRole="Institutions" ToRole="Courses" />
     <NavigationProperty Name="Results" Relationship="Self.FK_Results_Institutions" FromRole="Institutions" ToRole="Results" />
     <NavigationProperty Name="Transaction" Relationship="Self.FK_Transactions_Institutions" FromRole="Institutions" ToRole="Transactions" />
+    <NavigationProperty Name="Transactions" Relationship="Education_Platform_Final_TermModel.FK_Transactions_Institutions1" FromRole="Institution" ToRole="Transaction" />
   </EntityType>
   <EntityType Name="Mentor">
     <Key>
@@ -159,6 +160,7 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Mail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Requester" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Rating">
     <Key>
@@ -245,6 +247,7 @@
     <NavigationProperty Name="Cours" Relationship="Self.FK_Transactions_Courses" FromRole="Transactions" ToRole="Courses" />
     <NavigationProperty Name="Institution" Relationship="Self.FK_Transactions_Institutions" FromRole="Transactions" ToRole="Institutions" />
     <NavigationProperty Name="Student" Relationship="Self.FK_Transactions_Students" FromRole="Transactions" ToRole="Students" />
+    <NavigationProperty Name="Institution1" Relationship="Education_Platform_Final_TermModel.FK_Transactions_Institutions1" FromRole="Transaction" ToRole="Institution" />
   </EntityType>
   <EntityType Name="ValidStudent">
     <Key>
@@ -690,5 +693,32 @@
       <End Role="Students" EntitySet="Students" />
       <End Role="ValidStudents" EntitySet="ValidStudents" />
     </AssociationSet>
+    <EntitySet Name="AdminTokens" EntityType="Education_Platform_Final_TermModel.AdminToken" />
+    <AssociationSet Name="FK_Transactions_Institutions1" Association="Education_Platform_Final_TermModel.FK_Transactions_Institutions1">
+      <End Role="Institution" EntitySet="Institutions" />
+      <End Role="Transaction" EntitySet="Transactions" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="AdminToken">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AdminId" Type="Int32" />
+    <Property Name="Token" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedAt" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ExpiredAt" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_Transactions_Institutions1">
+    <End Type="Education_Platform_Final_TermModel.Institution" Role="Institution" Multiplicity="0..1" />
+    <End Type="Education_Platform_Final_TermModel.Transaction" Role="Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Institution">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="InstitutionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

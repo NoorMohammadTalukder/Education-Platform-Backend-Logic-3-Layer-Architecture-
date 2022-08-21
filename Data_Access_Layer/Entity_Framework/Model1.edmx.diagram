@@ -48,6 +48,8 @@
         <AssociationConnector Association="Education_Platform_Final_TermModel.FK_Reviewstudents_Students" ManuallyRouted="false" />
         <AssociationConnector Association="Education_Platform_Final_TermModel.FK_Transactions_Students" ManuallyRouted="false" />
         <AssociationConnector Association="Education_Platform_Final_TermModel.FK_ValidStudents_Students" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Education_Platform_Final_TermModel.AdminToken" Width="1.5" PointX="5.375" PointY="0.75" />
+        <AssociationConnector Association="Education_Platform_Final_TermModel.FK_Transactions_Institutions1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -12,6 +12,16 @@
     <Property Name="Photo" Type="image" />
     <Property Name="Password" Type="varchar(max)" />
   </EntityType>
+  <EntityType Name="AdminToken">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdminId" Type="int" />
+    <Property Name="Token" Type="varchar(max)" />
+    <Property Name="CreatedAt" Type="varchar(max)" />
+    <Property Name="ExpiredAt" Type="varchar(max)" />
+  </EntityType>
   <EntityType Name="AnswerScripts">
     <Key>
       <PropertyRef Name="Id" />
@@ -130,6 +140,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Mail" Type="varchar(max)" />
     <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="Requester" Type="varchar(max)" />
   </EntityType>
   <EntityType Name="Ratings">
     <Key>
@@ -469,14 +480,14 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Transactions_Institutions">
-    <End Role="Institutions" Type="Self.Institutions" Multiplicity="1" />
-    <End Role="Transactions" Type="Self.Transactions" Multiplicity="0..1" />
+    <End Role="Institutions" Type="Self.Institutions" Multiplicity="0..1" />
+    <End Role="Transactions" Type="Self.Transactions" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Institutions">
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Transactions">
-        <PropertyRef Name="Id" />
+        <PropertyRef Name="InstitutionId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -518,6 +529,7 @@
   </Association>
   <EntityContainer Name="Education_Platform_Final_TermModelStoreContainer">
     <EntitySet Name="Admins" EntityType="Self.Admins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AdminToken" EntityType="Self.AdminToken" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AnswerScripts" EntityType="Self.AnswerScripts" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Assignments" EntityType="Self.Assignments" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Certificates" EntityType="Self.Certificates" Schema="dbo" store:Type="Tables" />

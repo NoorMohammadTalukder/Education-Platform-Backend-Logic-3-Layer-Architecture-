@@ -20,6 +20,7 @@ namespace Data_Access_Layer.Entity_Framework
             this.Certificates = new HashSet<Certificate>();
             this.Courses = new HashSet<Cours>();
             this.Results = new HashSet<Result>();
+            this.Transactions = new HashSet<Transaction>();
         }
     
         public int Id { get; set; }
@@ -39,5 +40,7 @@ namespace Data_Access_Layer.Entity_Framework
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Result> Results { get; set; }
         public virtual Transaction Transaction { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Transaction> Transactions { get; set; }
     }
 }

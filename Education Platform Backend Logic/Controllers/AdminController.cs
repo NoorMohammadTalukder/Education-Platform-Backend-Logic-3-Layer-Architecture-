@@ -308,5 +308,81 @@ namespace Education_Platform_Backend_Logic.Controllers
             var data = AdminService.DeleteStudent(id);
             return Request.CreateResponse(data ? true : false);
         }
+
+        //-----------------------------------------------------------
+        //------------------Transaction Work Started-----------------
+        //-----------------------------------------------------------
+
+        [Route("api/admin/all/transaction")]
+        [HttpGet]
+        public HttpResponseMessage GetAllTransactions()
+        {
+            var data = AdminService.GetTransactions();
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+
+        }
+
+        //-----------------------------------------------------------
+        //------------------Revenue Model Work Started-----------------
+        //-----------------------------------------------------------
+
+        [Route("api/admin/all/revenue")]
+        [HttpGet]
+        public HttpResponseMessage GetAllRevenue()
+        {
+            var data = AdminService.GetRevenue();
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+
+        }
+
+        //-----------------------------------------------------------
+        //------------------Search Work Started-----------------
+        //-----------------------------------------------------------
+
+        //Mentor
+
+        [Route("api/admin/search/student/{search}")]
+        [HttpGet]
+        public HttpResponseMessage StudentSearch(string search)
+        {
+            var data = AdminService.StudentSearch(search);
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+
+        }
+
+        //Mentor
+
+        [Route("api/admin/search/mentor/{search}")]
+        [HttpGet]
+        public HttpResponseMessage MentorSearch(string search)
+        {
+            var data = AdminService.MentorSearch(search);
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+
+        }
+
+        //Institution
+
+        [Route("api/admin/search/institution/{search}")]
+        [HttpGet]
+        public HttpResponseMessage InstitutionSearch(string search)
+        {
+            var data = AdminService.InstitutionSearch(search);
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+
+        }
+
+        //-----------------------------------------------------------
+        //------------------Password Change Requests Work Started-----------------
+        //-----------------------------------------------------------
+
+        [Route("api/admin/get/passwordchangerequests")]
+        [HttpGet]
+        public HttpResponseMessage PasswordChangeRequests()
+        {
+             var data = AdminService.GetPasswordRequests();
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+
+        }
     }
 }

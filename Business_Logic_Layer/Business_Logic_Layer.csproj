@@ -61,16 +61,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BOs\AdminModel.cs" />
+    <Compile Include="BOs\AdminTokenModel.cs" />
     <Compile Include="BOs\AssignmentModel.cs" />
     <Compile Include="BOs\CourseModel.cs" />
     <Compile Include="BOs\InstitutionModel.cs" />
     <Compile Include="BOs\MentorModel.cs" />
     <Compile Include="BOs\NoticeModel.cs" />
+    <Compile Include="BOs\PasswordChangeRequestModel.cs" />
     <Compile Include="BOs\StudentModel.cs" />
+    <Compile Include="BOs\TransactionModel.cs" />
     <Compile Include="BOs\ValidStudentModel.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AdminService.cs" />
+    <Compile Include="Services\AuthenticationServices.cs" />
     <Compile Include="Services\InstitutionService.cs" />
     <Compile Include="Services\MentorService.cs" />
     <Compile Include="Services\StudentService.cs" />

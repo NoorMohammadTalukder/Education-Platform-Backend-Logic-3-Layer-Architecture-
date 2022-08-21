@@ -17,5 +17,6 @@ namespace Data_Access_Layer.Entity_Framework
         public int Id { get; set; }
         public string Mail { get; set; }
         public string Status { get; set; }
+        public string Requester { get; set; }
     }
 }

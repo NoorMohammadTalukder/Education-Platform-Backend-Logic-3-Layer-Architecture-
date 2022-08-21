@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Education_Platform_Final_TermModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Education_Platform_Final_TermModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Admins">
           <Key>
             <PropertyRef Name="Id" />
@@ -16,6 +16,16 @@
           <Property Name="Phone" Type="varchar(max)" />
           <Property Name="Photo" Type="image" />
           <Property Name="Password" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="AdminToken">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdminId" Type="int" />
+          <Property Name="Token" Type="varchar(max)" />
+          <Property Name="CreatedAt" Type="varchar(max)" />
+          <Property Name="ExpiredAt" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="AnswerScripts">
           <Key>
@@ -135,6 +145,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Mail" Type="varchar(max)" />
           <Property Name="Status" Type="varchar" MaxLength="50" />
+          <Property Name="Requester" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Ratings">
           <Key>
@@ -474,14 +485,14 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Transactions_Institutions">
-          <End Role="Institutions" Type="Self.Institutions" Multiplicity="1" />
-          <End Role="Transactions" Type="Self.Transactions" Multiplicity="0..1" />
+          <End Role="Institutions" Type="Self.Institutions" Multiplicity="0..1" />
+          <End Role="Transactions" Type="Self.Transactions" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Institutions">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Transactions">
-              <PropertyRef Name="Id" />
+              <PropertyRef Name="InstitutionId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -523,6 +534,7 @@
         </Association>
         <EntityContainer Name="Education_Platform_Final_TermModelStoreContainer">
           <EntitySet Name="Admins" EntityType="Self.Admins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdminToken" EntityType="Self.AdminToken" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AnswerScripts" EntityType="Self.AnswerScripts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Assignments" EntityType="Self.Assignments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Certificates" EntityType="Self.Certificates" Schema="dbo" store:Type="Tables" />
@@ -644,8 +656,7 @@
             <End Role="ValidStudents" EntitySet="ValidStudents" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Education_Platform_Final_TermModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -766,6 +777,7 @@
           <NavigationProperty Name="Courses" Relationship="Self.FK_Courses_Institutions" FromRole="Institutions" ToRole="Courses" />
           <NavigationProperty Name="Results" Relationship="Self.FK_Results_Institutions" FromRole="Institutions" ToRole="Results" />
           <NavigationProperty Name="Transaction" Relationship="Self.FK_Transactions_Institutions" FromRole="Institutions" ToRole="Transactions" />
+          <NavigationProperty Name="Transactions" Relationship="Education_Platform_Final_TermModel.FK_Transactions_Institutions1" FromRole="Institution" ToRole="Transaction" />
         </EntityType>
         <EntityType Name="Mentor">
           <Key>
@@ -808,6 +820,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Mail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Requester" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Rating">
           <Key>
@@ -894,6 +907,7 @@
           <NavigationProperty Name="Cours" Relationship="Self.FK_Transactions_Courses" FromRole="Transactions" ToRole="Courses" />
           <NavigationProperty Name="Institution" Relationship="Self.FK_Transactions_Institutions" FromRole="Transactions" ToRole="Institutions" />
           <NavigationProperty Name="Student" Relationship="Self.FK_Transactions_Students" FromRole="Transactions" ToRole="Students" />
+          <NavigationProperty Name="Institution1" Relationship="Education_Platform_Final_TermModel.FK_Transactions_Institutions1" FromRole="Transaction" ToRole="Institution" />
         </EntityType>
         <EntityType Name="ValidStudent">
           <Key>
@@ -1339,7 +1353,34 @@
             <End Role="Students" EntitySet="Students" />
             <End Role="ValidStudents" EntitySet="ValidStudents" />
           </AssociationSet>
+          <EntitySet Name="AdminTokens" EntityType="Education_Platform_Final_TermModel.AdminToken" />
+          <AssociationSet Name="FK_Transactions_Institutions1" Association="Education_Platform_Final_TermModel.FK_Transactions_Institutions1">
+            <End Role="Institution" EntitySet="Institutions" />
+            <End Role="Transaction" EntitySet="Transactions" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="AdminToken">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdminId" Type="Int32" />
+          <Property Name="Token" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedAt" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ExpiredAt" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_Transactions_Institutions1">
+          <End Type="Education_Platform_Final_TermModel.Institution" Role="Institution" Multiplicity="0..1" />
+          <End Type="Education_Platform_Final_TermModel.Transaction" Role="Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Institution">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Transaction">
+              <PropertyRef Name="InstitutionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1482,6 +1523,7 @@
           <EntitySetMapping Name="PasswordChangeRequests">
             <EntityTypeMapping TypeName="Education_Platform_Final_TermModel.PasswordChangeRequest">
               <MappingFragment StoreEntitySet="PasswordChangeRequests">
+                <ScalarProperty Name="Requester" ColumnName="Requester" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Mail" ColumnName="Mail" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
@@ -1564,6 +1606,17 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="StudentId" ColumnName="StudentId" />
                 <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdminTokens">
+            <EntityTypeMapping TypeName="Education_Platform_Final_TermModel.AdminToken">
+              <MappingFragment StoreEntitySet="AdminToken">
+                <ScalarProperty Name="ExpiredAt" ColumnName="ExpiredAt" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

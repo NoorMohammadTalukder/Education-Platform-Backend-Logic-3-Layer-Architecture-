@@ -55,5 +55,20 @@ namespace Data_Access_Layer
         {
             return new CourseRepo(db);
         }
+
+        public static IRepo<Transaction, int> GetTransactionDataAccess()
+        {
+            return new TransactionRepo(db);
+        }
+
+        public static IRepo<PasswordChangeRequest, int> GetPasswordChangeRequestDataAccess()
+        {
+            return new PasswordChangeRequestRepo(db);
+        }
+
+        public static IAdminAuth GetAdminTokenDataAccess()
+        {
+            return new AdminTokenRepo(db);
+        }
     }
 }

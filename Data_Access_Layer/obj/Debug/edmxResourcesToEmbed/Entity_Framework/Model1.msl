@@ -137,6 +137,7 @@
     <EntitySetMapping Name="PasswordChangeRequests">
       <EntityTypeMapping TypeName="Education_Platform_Final_TermModel.PasswordChangeRequest">
         <MappingFragment StoreEntitySet="PasswordChangeRequests">
+          <ScalarProperty Name="Requester" ColumnName="Requester" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Mail" ColumnName="Mail" />
           <ScalarProperty Name="Status" ColumnName="Status" />
@@ -219,6 +220,17 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="StudentId" ColumnName="StudentId" />
           <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AdminTokens">
+      <EntityTypeMapping TypeName="Education_Platform_Final_TermModel.AdminToken">
+        <MappingFragment StoreEntitySet="AdminToken">
+          <ScalarProperty Name="ExpiredAt" ColumnName="ExpiredAt" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Token" ColumnName="Token" />
+          <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

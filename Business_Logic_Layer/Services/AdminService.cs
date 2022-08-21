@@ -365,5 +365,108 @@ namespace Business_Logic_Layer.Services
 
 
         }
+
+        //-----------------------------------------------------------
+        //------------------Transaction Work Started-----------------
+        //-----------------------------------------------------------
+        public static List<TransactionModel> GetTransactions()
+        {
+            var data = new Mapper(new MapperConfiguration
+                (cfg => cfg.CreateMap<Transaction, TransactionModel>())).Map<List<TransactionModel>>(DataAccess.GetTransactionDataAccess().Get());
+            return data;
+
+        }
+
+        //-----------------------------------------------------------
+        //------------------Revenue Work Started-----------------
+        //-----------------------------------------------------------
+        public static List<string> GetRevenue()
+        {
+            var data = new Mapper(new MapperConfiguration
+                (cfg => cfg.CreateMap<Transaction, TransactionModel>())).Map<List<TransactionModel>>(DataAccess.GetTransactionDataAccess().Get());
+
+            var sellingAmount = (from i in data
+                                 where (i.Id > 0)
+                                 select i.CreditedAmount).Sum();
+            var myEarning = 0.6 * sellingAmount;
+            var varsityEarning = 0.4 * sellingAmount;
+
+            var x = new List<string>()
+                   
+                    {
+                    sellingAmount.ToString(),
+                    myEarning.ToString(),
+                    varsityEarning.ToString(),
+
+                    };
+            
+                 
+            return x;
+        }
+
+        //-----------------------------------------------------------
+        //------------------Search Work Started-----------------
+        //-----------------------------------------------------------
+
+        //Student
+
+        public static List<StudentModel> StudentSearch (string search)
+        {
+            var data = new Mapper(new MapperConfiguration
+                 (cfg => cfg.CreateMap<Student, StudentModel>())).Map<List<StudentModel>>(DataAccess.GetStudentDataAccess().Get());
+
+            var searchResult = (from i in data
+                                where i.Name.Contains(search) || i.Email.Contains(search)
+
+                                select i).ToList();
+            return searchResult;
+
+        }
+
+        //Mentor
+
+        public static List<MentorModel> MentorSearch(string search)
+        {
+            var data = new Mapper(new MapperConfiguration
+                 (cfg => cfg.CreateMap<Mentor, MentorModel>())).Map<List<MentorModel>>(DataAccess.GetMentorDataAccess().Get());
+
+            var searchResult = (from i in data
+                                where i.Name.Contains(search) || i.Email.Contains(search)
+
+                                select i).ToList();
+            return searchResult;
+
+        }
+
+        //Institution
+
+        public static List<InstitutionModel> InstitutionSearch(string search)
+        {
+            var data = new Mapper(new MapperConfiguration
+                 (cfg => cfg.CreateMap<Institution, InstitutionModel>())).Map<List<InstitutionModel>>(DataAccess.GetInstitutionDataAccess().Get());
+
+            var searchResult = (from i in data
+                                where i.Name.Contains(search) || i.Email.Contains(search)
+
+                                select i).ToList();
+            return searchResult;
+
+        }
+
+        //-----------------------------------------------------------
+        //------------------Password Request Work Started-----------------
+        //-----------------------------------------------------------
+
+        public static List<PasswordChangeRequestModel> GetPasswordRequests()
+        {
+            var data = new Mapper(new MapperConfiguration
+                (cfg => cfg.CreateMap<PasswordChangeRequest, PasswordChangeRequestModel>())).Map<List<PasswordChangeRequestModel>>(DataAccess.GetPasswordChangeRequestDataAccess().Get());
+            return data;
+
+        }
+
+
+
+
     }
 }

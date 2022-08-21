@@ -25,5 +25,6 @@ namespace Data_Access_Layer.Entity_Framework
         public virtual Cours Cours { get; set; }
         public virtual Institution Institution { get; set; }
         public virtual Student Student { get; set; }
+        public virtual Institution Institution1 { get; set; }
     }
 }

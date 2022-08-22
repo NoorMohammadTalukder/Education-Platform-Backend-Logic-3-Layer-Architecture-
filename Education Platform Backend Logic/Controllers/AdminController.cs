@@ -326,11 +326,22 @@ namespace Education_Platform_Backend_Logic.Controllers
         //------------------Revenue Model Work Started-----------------
         //-----------------------------------------------------------
 
+        //all
         [Route("api/admin/all/revenue")]
         [HttpGet]
         public HttpResponseMessage GetAllRevenue()
         {
             var data = AdminService.GetRevenue();
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+
+        }
+
+        //institution
+        [Route("api/admin/institution/revenue/{id}")]
+        [HttpGet]
+        public HttpResponseMessage InstitutionRevenue(int id)
+        {
+            var data = AdminService.InstitutionRevenue(id);
             return Request.CreateResponse(HttpStatusCode.OK, data);
 
         }
@@ -381,6 +392,76 @@ namespace Education_Platform_Backend_Logic.Controllers
         public HttpResponseMessage PasswordChangeRequests()
         {
              var data = AdminService.GetPasswordRequests();
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+
+        }
+
+        //-----------------------------------------------------------
+        //------------------Activate Deactivate Verify Work Started-----------------
+        //-----------------------------------------------------------
+
+        //institution
+        [Route("api/admin/activate/institution/{id}")]
+        [HttpGet]
+        public HttpResponseMessage ActivateInstitution(int id)
+        {
+            var data = AdminService.ActivateInstitution(id);
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+
+        }
+        [Route("api/admin/deactivate/institution/{id}")]
+        [HttpGet]
+        public HttpResponseMessage DeactivateInstitution(int id)
+        {
+            var data = AdminService.DeactivateInstitution(id);
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+
+        }
+
+        //mentor
+        [Route("api/admin/activate/mentor/{id}")]
+        [HttpGet]
+        public HttpResponseMessage ActivateMentor(int id)
+        {
+            var data = AdminService.ActivateMentor(id);
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+
+        }
+        [Route("api/admin/deactivate/mentor/{id}")]
+        [HttpGet]
+        public HttpResponseMessage DeactivateMentor(int id)
+        {
+            var data = AdminService.DeactivateMentor(id);
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+
+        }
+
+        //student
+        [Route("api/admin/activate/student/{id}")]
+        [HttpGet]
+        public HttpResponseMessage ActivateStudent(int id)
+        {
+            var data = AdminService.ActivateStudent(id);
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+
+        }
+        [Route("api/admin/deactivate/student/{id}")]
+        [HttpGet]
+        public HttpResponseMessage DeactivateStudent(int id)
+        {
+            var data = AdminService.DeactivateStudent(id);
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+
+        }
+
+        //-----------------------------------------------------------
+        //------------------Certificate Approve Work Started---------
+        //-----------------------------------------------------------
+        [Route("api/admin/certificate/approve/student/{id}")]
+        [HttpGet]
+        public HttpResponseMessage CertificateApprove(int id)
+        {
+            var data = AdminService.CertificateApprove(id);
             return Request.CreateResponse(HttpStatusCode.OK, data);
 
         }

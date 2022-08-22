@@ -61,6 +61,8 @@ namespace Data_Access_Layer
             return new TransactionRepo(db);
         }
 
+       
+
         public static IRepo<PasswordChangeRequest, int> GetPasswordChangeRequestDataAccess()
         {
             return new PasswordChangeRequestRepo(db);
@@ -69,6 +71,11 @@ namespace Data_Access_Layer
         public static IAdminAuth GetAdminTokenDataAccess()
         {
             return new AdminTokenRepo(db);
+        }
+
+        public static IUserActivateDeactivateApprove GetActivateDeactivateDataAccess()
+        {
+            return new ActivateDeactivateUserRepo(db);
         }
     }
 }

@@ -5,31 +5,29 @@ using Data_Access_Layer.Entity_Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business_Logic_Layer.Services
 {
     public class AdminService
     {
 
-       /*
-        public static List<AdminModel> Get1()
-        {
-            var data = DataAccess.GetAdminDataAccess().Get();
-            var rdata = new List<AdminModel>();
-            foreach (var item in data)
-            {
-                rdata.Add(new AdminModel()
-                {
-                    Id = item.Id,
-                    Name = item.Name,
-                   
-                });
-            }
-            return rdata;
-        }
-       */
+        /*
+         public static List<AdminModel> Get1()
+         {
+             var data = DataAccess.GetAdminDataAccess().Get();
+             var rdata = new List<AdminModel>();
+             foreach (var item in data)
+             {
+                 rdata.Add(new AdminModel()
+                 {
+                     Id = item.Id,
+                     Name = item.Name,
+
+                 });
+             }
+             return rdata;
+         }
+        */
 
         public static List<AdminModel> Get()
         {
@@ -47,20 +45,20 @@ namespace Business_Logic_Layer.Services
         public static bool Create(AdminModel obj)
         {
             var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<AdminModel, Admin>())).Map<Admin>(obj);
-           // var data = config.Map<Admin>(obj);
+            // var data = config.Map<Admin>(obj);
 
             try
             {
                 DataAccess.GetAdminDataAccess().Create(data);
 
                 return true;
-                
+
             }
             catch
             {
                 return false;
             }
-            
+
         }
 
         public static bool Update(AdminModel obj)
@@ -108,7 +106,7 @@ namespace Business_Logic_Layer.Services
         public static bool CreateInstitution(InstitutionModel obj)
         {
             var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<InstitutionModel, Institution>())).Map<Institution>(obj);
-            
+
 
             try
             {
@@ -146,6 +144,63 @@ namespace Business_Logic_Layer.Services
         public static bool DeleteInstitution(int id)
         {
             DataAccess.GetInstitutionDataAccess().Delete(id);
+            return true;
+        }
+        //-----------------------------------------------------------
+        //------------------Verify /Activate / Deactivate Work Started-----------------
+        //-----------------------------------------------------------
+
+        //Institution
+        public static bool ActivateInstitution(int id)
+        {
+
+
+            DataAccess.GetActivateDeactivateDataAccess().ActivateInstitution(id);
+            return true;
+        }
+        public static bool DeactivateInstitution(int id)
+        {
+
+            DataAccess.GetActivateDeactivateDataAccess().DeactivateInstitution(id);
+            return true;
+        }
+        //Mentor
+        public static bool ActivateMentor(int id)
+        {
+
+
+            DataAccess.GetActivateDeactivateDataAccess().ActivateMentor(id);
+            return true;
+        }
+        public static bool DeactivateMentor(int id)
+        {
+
+            DataAccess.GetActivateDeactivateDataAccess().DeactivateMentor(id);
+            return true;
+        }
+
+        //Student
+        public static bool ActivateStudent(int id)
+        {
+
+
+            DataAccess.GetActivateDeactivateDataAccess().ActivateStudent(id);
+            return true;
+        }
+        public static bool DeactivateStudent(int id)
+        {
+
+            DataAccess.GetActivateDeactivateDataAccess().DeactivateStudent(id);
+            return true;
+        }
+
+        //-----------------------------------------------------------
+        //------------------Certificate Approve Work Started-----------------
+        //-----------------------------------------------------------
+        public static bool CertificateApprove(int id)
+        {
+
+            DataAccess.GetActivateDeactivateDataAccess().CertificateApprove(id);
             return true;
         }
 
@@ -188,8 +243,8 @@ namespace Business_Logic_Layer.Services
 
         public static bool UpdateValidStudent(ValidStudentModel obj)
         {
-            
-            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<ValidStudentModel, ValidStudent > ())).Map<ValidStudent>(obj);
+
+            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<ValidStudentModel, ValidStudent>())).Map<ValidStudent>(obj);
 
             try
             {
@@ -307,7 +362,7 @@ namespace Business_Logic_Layer.Services
                 return false;
             }
 
-         
+
         }
         public static MentorModel GetSingleMentor(int id)
         {
@@ -380,6 +435,8 @@ namespace Business_Logic_Layer.Services
         //-----------------------------------------------------------
         //------------------Revenue Work Started-----------------
         //-----------------------------------------------------------
+
+        //all revenue
         public static List<string> GetRevenue()
         {
             var data = new Mapper(new MapperConfiguration
@@ -392,16 +449,34 @@ namespace Business_Logic_Layer.Services
             var varsityEarning = 0.4 * sellingAmount;
 
             var x = new List<string>()
-                   
+
                     {
                     sellingAmount.ToString(),
                     myEarning.ToString(),
                     varsityEarning.ToString(),
 
                     };
-            
-                 
+
+
             return x;
+        }
+        
+        //single varsity revenue
+
+        public static double InstitutionRevenue (int id)
+        {
+            var data = new Mapper(new MapperConfiguration
+                 (cfg => cfg.CreateMap<Transaction, TransactionModel>())).Map<List<TransactionModel>>(DataAccess.GetTransactionDataAccess().Get());
+
+            var sellingAmount = (from i in data
+                                 where (i.InstitutionId > 0)
+                                 select i.CreditedAmount).Sum();
+
+            var sellingAmountDouble = Convert.ToDouble(sellingAmount);
+            var myEarning = 0.6 * sellingAmount;
+            double varsityEarning = 0.4 * sellingAmountDouble;
+
+            return varsityEarning;
         }
 
         //-----------------------------------------------------------

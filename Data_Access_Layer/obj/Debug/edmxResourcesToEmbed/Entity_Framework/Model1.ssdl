@@ -107,6 +107,16 @@
     <Property Name="IsValid" Type="varchar(max)" />
     <Property Name="Photo" Type="image" />
   </EntityType>
+  <EntityType Name="InstitutionTokens">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InstitutionId" Type="int" />
+    <Property Name="CreatedAt" Type="varchar(max)" />
+    <Property Name="ExpiredAt" Type="varchar(max)" />
+    <Property Name="Token" Type="varchar(max)" />
+  </EntityType>
   <EntityType Name="Mentors">
     <Key>
       <PropertyRef Name="Id" />
@@ -121,6 +131,16 @@
     <Property Name="Gender" Type="varchar(max)" />
     <Property Name="Institution" Type="varchar(max)" />
     <Property Name="IsValid" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="MentorTokens">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MentorId" Type="int" />
+    <Property Name="Createdat" Type="varchar(max)" />
+    <Property Name="Expiredat" Type="varchar(max)" />
+    <Property Name="Token" Type="varchar(max)" />
   </EntityType>
   <EntityType Name="Notices">
     <Key>
@@ -537,7 +557,9 @@
     <EntitySet Name="CourseModule" EntityType="Self.CourseModule" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Courses" EntityType="Self.Courses" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Institutions" EntityType="Self.Institutions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InstitutionTokens" EntityType="Self.InstitutionTokens" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Mentors" EntityType="Self.Mentors" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MentorTokens" EntityType="Self.MentorTokens" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Notices" EntityType="Self.Notices" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PasswordChangeRequests" EntityType="Self.PasswordChangeRequests" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Ratings" EntityType="Self.Ratings" Schema="dbo" store:Type="Tables" />

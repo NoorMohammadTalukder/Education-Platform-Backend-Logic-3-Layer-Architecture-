@@ -698,6 +698,8 @@
       <End Role="Institution" EntitySet="Institutions" />
       <End Role="Transaction" EntitySet="Transactions" />
     </AssociationSet>
+    <EntitySet Name="InstitutionTokens" EntityType="Education_Platform_Final_TermModel.InstitutionToken" />
+    <EntitySet Name="MentorTokens" EntityType="Education_Platform_Final_TermModel.MentorToken" />
   </EntityContainer>
   <EntityType Name="AdminToken">
     <Key>
@@ -721,4 +723,24 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="InstitutionToken">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InstitutionId" Type="Int32" />
+    <Property Name="CreatedAt" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ExpiredAt" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Token" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="MentorToken">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MentorId" Type="Int32" />
+    <Property Name="Createdat" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Expiredat" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Token" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

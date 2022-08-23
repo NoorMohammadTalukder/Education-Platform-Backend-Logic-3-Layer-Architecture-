@@ -6,26 +6,28 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Education_Platform_Backend_Logic.Controllers
 {
+    [EnableCors("*", "*", "*")]
     public class InstitutionController : ApiController
     {
 
         [Route("api/AllInstitution")]
         [HttpGet]
-        public HttpResponseMessage Get()
+        public HttpResponseMessage GetInstitution()
         {
-            var data = InstitutionService.Get();
+            var data = InstitutionService.GetInstitution();
             return Request.CreateResponse(HttpStatusCode.OK, data);
 
         }
 
         [Route("api/SingleInstitution/{id}")]
         [HttpGet]
-        public HttpResponseMessage GetId(int id)
+        public HttpResponseMessage GetSingleInstituion(int id)
         {
-            var data = InstitutionService.GetSingle(id);
+            var data = InstitutionService.GetSingleInstitution(id);
             return Request.CreateResponse(HttpStatusCode.OK, data);
 
         }
@@ -34,7 +36,7 @@ namespace Education_Platform_Backend_Logic.Controllers
         [HttpPost]
         public HttpResponseMessage Create(InstitutionModel obj)
         {
-            bool data = InstitutionService.Create(obj);
+            bool data = InstitutionService.CreateInstitution(obj);
 
             return Request.CreateResponse(data ? true : false);
 
@@ -43,9 +45,9 @@ namespace Education_Platform_Backend_Logic.Controllers
 
         [Route("api/UpdateInstitution")]
         [HttpPost]
-        public HttpResponseMessage Update(InstitutionModel obj)
+        public HttpResponseMessage UpdateInstituion(InstitutionModel obj)
         {
-            bool data = InstitutionService.Update(obj);
+            bool data = InstitutionService.UpdateInstitution(obj);
             return Request.CreateResponse(data ? HttpStatusCode.OK : HttpStatusCode.BadRequest);
 
         }
@@ -54,14 +56,14 @@ namespace Education_Platform_Backend_Logic.Controllers
         [HttpGet]
         public HttpResponseMessage Delete(int id)
         {
-            bool data = InstitutionService.Delete(id);
+            bool data = InstitutionService.DeleteInstitution(id);
             return Request.CreateResponse(data ? true : false);
 
         }
 
-        /* Mentor Controller-------
-         * ---------------
-         * ---------------*/
+        /* -------------Mentor Controller-------
+         ******************** ---------------
+         * ---------------*******************/
 
         [Route("api/CreateMentor")]
         [HttpPost]
@@ -83,7 +85,7 @@ namespace Education_Platform_Backend_Logic.Controllers
 
         [Route("api/SingleMentor/{id}")]
         [HttpGet]
-        public HttpResponseMessage Getonly(int id)
+        public HttpResponseMessage GetSingleMentor(int id)
         {
             var data = InstitutionService.GetSingleMentor(id);
             return Request.CreateResponse(HttpStatusCode.OK, data);
@@ -150,10 +152,132 @@ namespace Education_Platform_Backend_Logic.Controllers
         }
         [Route("api/DeleteNotice/{id}")]
         [HttpGet]
-        public HttpResponseMessage NoticeMentor(int id)
+        public HttpResponseMessage DeleteNotice(int id)
         {
             bool data = InstitutionService.DeleteNotice(id);
             return Request.CreateResponse(data ? true : false);
+        }
+        /* Course Controller-------***********
+   *****************  Course Controller ---------------
+   * ********************---------------*/
+        [Route("api/AllCourse")]
+        [HttpGet]
+        public HttpResponseMessage GetCourse()
+        {
+            var data = InstitutionService.GetCourse();
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+
+        }
+
+        [Route("api/SingleCourse/{id}")]
+        [HttpGet]
+        public HttpResponseMessage GetSingleCourse(int id)
+        {
+            var data = InstitutionService.GetSingleCourse(id);
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+
+        }
+
+        [Route("api/CreateCourse")]
+        [HttpPost]
+        public HttpResponseMessage CreateCourse(CourseModel obj)
+        {
+            bool data = InstitutionService.CreateCourse(obj);
+
+            return Request.CreateResponse(data ? true : false);
+
+
+        }
+
+        [Route("api/UpdateCourse")]
+        [HttpPost]
+        public HttpResponseMessage UpdateCourse(CourseModel obj)
+        {
+            bool data = InstitutionService.UpdateCourse(obj);
+            return Request.CreateResponse(data ? HttpStatusCode.OK : HttpStatusCode.BadRequest);
+
+        }
+
+        [Route("api/DeleteColurse/{id}")]
+        [HttpGet]
+        public HttpResponseMessage DeleteCourse(int id)
+        {
+            bool data = InstitutionService.DeleteCourse(id);
+            return Request.CreateResponse(data ? true : false);
+
+        }
+
+        /* -------------Result Controller-------
+         ******************** ---------------
+         * ---------------*******************/
+
+        [Route("api/AllResult")]
+        [HttpGet]
+        public HttpResponseMessage GetResult()
+        {
+            var data = InstitutionService.GetResult();
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+
+        }
+
+        [Route("api/SingleResult/{id}")]
+        [HttpGet]
+        public HttpResponseMessage GetSingleResult(int id)
+        {
+            var data = InstitutionService.GetSingleResult(id);
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+
+        }
+
+        [Route("api/CreateResult")]
+        [HttpPost]
+        public HttpResponseMessage CreateResult(ResultModel obj)
+        {
+            bool data = InstitutionService.CreateResult(obj);
+
+            return Request.CreateResponse(data ? true : false);
+
+
+        }
+
+        [Route("api/UpdateResult")]
+        [HttpPost]
+        public HttpResponseMessage UpdateResult(ResultModel obj)
+        {
+            bool data = InstitutionService.UpdateResult(obj);
+            return Request.CreateResponse(data ? HttpStatusCode.OK : HttpStatusCode.BadRequest);
+
+        }
+
+        [Route("api/DeleteResult/{id}")]
+        [HttpGet]
+        public HttpResponseMessage DeleteResult(int id)
+        {
+            bool data = InstitutionService.DeleteResult(id);
+            return Request.CreateResponse(data ? true : false);
+
+        }
+
+        /* -------------Transaction Controller-------
+        ******************** ---------------
+        * ---------------*******************/
+
+        [Route("api/AllTransaction")]
+        [HttpGet]
+        public HttpResponseMessage GetTransaction()
+        {
+            var data = InstitutionService.GetTransaction();
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+
+        }
+
+        [Route("api/SingleTransaction/{id}")]
+        [HttpGet]
+        public HttpResponseMessage GetSingleTransaction(int id)
+        {
+            var data = InstitutionService.GetSingleTransaction(id);
+            return Request.CreateResponse(HttpStatusCode.OK, data);
+
         }
     }
 }

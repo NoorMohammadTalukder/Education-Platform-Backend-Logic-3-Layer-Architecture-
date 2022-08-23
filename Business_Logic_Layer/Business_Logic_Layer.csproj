@@ -62,15 +62,24 @@
   <ItemGroup>
     <Compile Include="BOs\AdminModel.cs" />
     <Compile Include="BOs\AdminTokenModel.cs" />
+    <Compile Include="BOs\AnswerScriptModel.cs" />
     <Compile Include="BOs\AssignmentModel.cs" />
+    <Compile Include="BOs\CertificateModel.cs" />
+    <Compile Include="BOs\CounselingModel.cs" />
     <Compile Include="BOs\CourseModel.cs" />
+    <Compile Include="BOs\CourseModuleModel.cs" />
     <Compile Include="BOs\InstitutionModel.cs" />
+    <Compile Include="BOs\InstitutionTokenModel.cs" />
     <Compile Include="BOs\MentorModel.cs" />
+    <Compile Include="BOs\MentorTokenModel.cs" />
     <Compile Include="BOs\NoticeModel.cs" />
     <Compile Include="BOs\PasswordChangeRequestModel.cs" />
+    <Compile Include="BOs\ResultModel.cs" />
+    <Compile Include="BOs\ReviewStudentModel.cs" />
     <Compile Include="BOs\StudentModel.cs" />
     <Compile Include="BOs\TransactionModel.cs" />
     <Compile Include="BOs\ValidStudentModel.cs" />
+    <Compile Include="BOs\ViewRatingModel.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AdminService.cs" />

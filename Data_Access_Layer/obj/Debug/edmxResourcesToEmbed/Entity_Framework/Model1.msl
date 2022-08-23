@@ -234,5 +234,27 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="InstitutionTokens">
+      <EntityTypeMapping TypeName="Education_Platform_Final_TermModel.InstitutionToken">
+        <MappingFragment StoreEntitySet="InstitutionTokens">
+          <ScalarProperty Name="Token" ColumnName="Token" />
+          <ScalarProperty Name="ExpiredAt" ColumnName="ExpiredAt" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="InstitutionId" ColumnName="InstitutionId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MentorTokens">
+      <EntityTypeMapping TypeName="Education_Platform_Final_TermModel.MentorToken">
+        <MappingFragment StoreEntitySet="MentorTokens">
+          <ScalarProperty Name="Token" ColumnName="Token" />
+          <ScalarProperty Name="Expiredat" ColumnName="Expiredat" />
+          <ScalarProperty Name="Createdat" ColumnName="Createdat" />
+          <ScalarProperty Name="MentorId" ColumnName="MentorId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

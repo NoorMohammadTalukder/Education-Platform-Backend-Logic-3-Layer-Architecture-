@@ -123,8 +123,10 @@ namespace Business_Logic_Layer.Services
         //Assignment Entities
 
 
-        public static bool AssignmentCreate(AssignmentModel obj)
+        public static bool AssignmentCreate(AssignmentModel obj, string fg)
         {
+            var mentorId = int.Parse(fg);
+            obj.MentorId = mentorId;
             var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<AssignmentModel, Assignment>())).Map<Assignment>(obj);
             try
             {
@@ -168,5 +170,306 @@ namespace Business_Logic_Layer.Services
                 return false;
             }
         }
+        //Notice
+        public static bool NoticeCreate(NoticeModel obj)
+        {
+            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<NoticeModel, Notice>())).Map<Notice>(obj);
+            try
+            {
+                DataAccess.GetNoticeDataAccess().Create(data);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static NoticeModel GetNoticeonly(int id)
+        {
+            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<Notice, NoticeModel>())).Map<NoticeModel>(DataAccess.GetAssignmentDataAccess().GetId(id));
+            return data;
+
+        }
+        public static bool NoticeUpdate(NoticeModel obj)
+        {
+            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<NoticeModel, Notice>())).Map<Notice>(obj);
+            try
+            {
+                DataAccess.GetNoticeDataAccess().Update(data);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public static List<NoticeModel> GetAllNotice()
+        {
+            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<Notice, NoticeModel>())).Map<List<NoticeModel>>(DataAccess.GetNoticeDataAccess().Get());
+            return data;
+
+        }
+        //Counseling
+
+        public static bool CounselingCreate(CounselingModel obj)
+        {
+            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<CounselingModel, Counseling>())).Map<Counseling>(obj);
+            try
+            {
+                DataAccess.GetCounselingDataAccess().Create(data);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public static CounselingModel GetCounselingeonly(int id)
+        {
+            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<Counseling, CounselingModel>())).Map<CounselingModel>(DataAccess.GetCounselingDataAccess().GetId(id));
+            return data;
+
+        }
+        public static List<CounselingModel> GetAllCounseling()
+        {
+
+            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<Counseling, CounselingModel>())).Map<List<CounselingModel>>(DataAccess.GetNoticeDataAccess().Get());
+            return data;
+
+        }
+        public static bool CounselingUpdate(CounselingModel obj)
+        {
+            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<CounselingModel, Counseling>())).Map<Counseling>(obj);
+            try
+            {
+                DataAccess.GetCounselingDataAccess().Update(data);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        //ReviewStudents
+
+        public static bool ReviewStudentCreate(ReviewStudentModel obj)
+        {
+            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<ReviewStudentModel, Reviewstudent>())).Map<Reviewstudent>(obj);
+            try
+            {
+                DataAccess.GetReviewstudentDataAccess().Create(data);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static List<ReviewStudentModel> GetAllStudentsReview()
+        {
+
+            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<Reviewstudent, ReviewStudentModel>())).Map<List<ReviewStudentModel>>(DataAccess.GetReviewstudentDataAccess().Get());
+            return data;
+
+        }
+        public static ReviewStudentModel GetSingleStudentsReview(int id)
+        {
+
+            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<Reviewstudent, ReviewStudentModel>())).Map<ReviewStudentModel>(DataAccess.GetReviewstudentDataAccess().GetId(id));
+            return data;
+
+        }
+        public static bool StudentReviewUpdate(ReviewStudentModel obj)
+        {
+            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<ReviewStudentModel, Reviewstudent>())).Map<Reviewstudent>(obj);
+            try
+            {
+                DataAccess.GetReviewstudentDataAccess().Update(data);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        //ViewRating
+        public static ViewRatingModel GetSingleRating(int id)
+        {
+
+            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<Rating, ViewRatingModel>())).Map<ViewRatingModel>(DataAccess.GetRatingDataAccess().GetId(id));
+            return data;
+
+        }
+
+        public static List<ViewRatingModel> GetAllRatings()
+        {
+
+            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<Rating, ViewRatingModel>())).Map<List<ViewRatingModel>>(DataAccess.GetRatingDataAccess().Get());
+            return data;
+
+        }
+
+        //Recomand Certificate
+        public static bool CertificateCreate(CertificateModel obj)
+        {
+            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<CertificateModel, Certificate>())).Map<Certificate>(obj);
+            try
+            {
+                DataAccess.GetCertificateDataAccess().Create(data);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public static bool CertificateUpdate(CertificateModel obj)
+        {
+            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<CertificateModel, Certificate>())).Map<Certificate>(obj);
+            try
+            {
+                DataAccess.GetCertificateDataAccess().Update(data);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+
+        //Post Result
+        public static bool ResultCreate(ResultModel obj)
+        {
+            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<ResultModel, Result>())).Map<Result>(obj);
+            try
+            {
+                DataAccess.GetResultDataAccess().Create(data);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public static List<ResultModel> GetAllStudentsResult()
+        {
+
+            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<Result, ResultModel>())).Map<List<ResultModel>>(DataAccess.GetResultDataAccess().Get());
+            return data;
+
+        }
+        public static ResultModel GetSingleStudentsResult(int id)
+        {
+
+            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<Result, ResultModel>())).Map<ResultModel>(DataAccess.GetResultDataAccess().GetId(id));
+            return data;
+
+        }
+
+        public static bool ResultDelete(int id)
+        {
+            try
+            {
+                DataAccess.GetResultDataAccess().Delete(id);
+                return true;
+            }
+            catch
+            {
+
+                return false;
+            }
+        }
+
+        public static bool ResultUpdate(ResultModel obj)
+        {
+            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<ResultModel, Result>())).Map<Result>(obj);
+            try
+            {
+                DataAccess.GetResultDataAccess().Update(data);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public static AnswerScriptModel GetSingleAnswerScript(int id)
+        {
+
+            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<AnswerScript, AnswerScriptModel>())).Map<AnswerScriptModel>(DataAccess.GetAnswerScriptDataAccess().GetId(id));
+            return data;
+
+        }
+
+        public static List<AnswerScriptModel> GetAllAnswerScript()
+        {
+
+            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<AnswerScript, AnswerScriptModel>())).Map<List<AnswerScriptModel>>(DataAccess.GetAnswerScriptDataAccess().Get());
+            return data;
+
+        }
+
+        /////////////////////////////////////////////
+
+
+        public static bool CourseModuleCreate(CourseModuleModel obj)
+        {
+            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<CourseModuleModel, CourseModule>())).Map<CourseModule>(obj);
+            try
+            {
+                DataAccess.GetCourseModuleDataAccess().Create(data);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public static List<CourseModuleModel> GetAllCourseModule()
+        {
+
+            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<CourseModule, CourseModuleModel>())).Map<List<CourseModuleModel>>(DataAccess.GetCourseModuleDataAccess().Get());
+            return data;
+
+        }
+        public static CourseModuleModel GetSingleCourseModule(int id)
+        {
+
+            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<CourseModule, CourseModuleModel>())).Map<CourseModuleModel>(DataAccess.GetCourseModuleDataAccess().GetId(id));
+            return data;
+
+        }
+
+        public static bool CourseModuleDelete(int id)
+        {
+            try
+            {
+                DataAccess.GetCourseModuleDataAccess().Delete(id);
+                return true;
+            }
+            catch
+            {
+
+                return false;
+            }
+        }
+
+        public static bool CourseModuleUpdate(CourseModuleModel obj)
+        {
+            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<CourseModuleModel, CourseModule>())).Map<CourseModule>(obj);
+            try
+            {
+                DataAccess.GetCourseModuleDataAccess().Update(data);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
     }
 }

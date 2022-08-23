@@ -43,5 +43,7 @@ namespace Data_Access_Layer.Entity_Framework
         public virtual DbSet<Transaction> Transactions { get; set; }
         public virtual DbSet<ValidStudent> ValidStudents { get; set; }
         public virtual DbSet<AdminToken> AdminTokens { get; set; }
+        public virtual DbSet<InstitutionToken> InstitutionTokens { get; set; }
+        public virtual DbSet<MentorToken> MentorTokens { get; set; }
     }
 }

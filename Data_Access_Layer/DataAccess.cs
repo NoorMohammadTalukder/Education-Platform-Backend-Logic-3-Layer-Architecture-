@@ -77,5 +77,48 @@ namespace Data_Access_Layer
         {
             return new ActivateDeactivateUserRepo(db);
         }
+
+      
+        public static IRepo<Result, int> GetResultDataAccess()
+        {
+            return new ResultRepo(db);
+        }
+
+       
+        public static IInstitutionAuth GetInstitutionTokenDataAccess()
+        {
+            return new InstitutionTokenRepo(db);
+        }
+
+      
+        public static IRepo<Counseling, int> GetCounselingDataAccess()
+        {
+            return new CounselingRepo(db);
+        }
+        public static IRepo<Reviewstudent, int> GetReviewstudentDataAccess()
+        {
+            return new ReviewStudentRepo(db);
+        }
+        public static IRepo<Rating, int> GetRatingDataAccess()
+        {
+            return new RatingsRepo(db);
+        }
+        public static IRepo<Certificate, int> GetCertificateDataAccess()
+        {
+            return new CertificateRepo(db);
+        }
+        
+        public static IRepo<AnswerScript, int> GetAnswerScriptDataAccess()
+        {
+            return new AnswerScriptRepo(db);
+        }
+        public static IRepo<CourseModule, int> GetCourseModuleDataAccess()
+        {
+            return new CourseModuleRepo(db);
+        }
+        public static IMentorAuth GetMentorTokenDataAccess()
+        {
+            return new MentorTokenRepo(db);
+        }
     }
 }

@@ -21,6 +21,24 @@ namespace Data_Access_Layer.Repos
 
             db.Students.Add(obj);
             db.SaveChanges();
+
+            MailMessage mail = new MailMessage();
+            // var studentId = (from p in db.Results where p.Id == id select p.StudentId).FirstOrDefault();
+
+            mail.To.Add(obj.Email);
+            mail.From = new MailAddress("19-40116-1@student.aiub.edu");
+            mail.Subject = "Your  account is recommanded by Mentor";
+            string Body = "Hello " + obj.Name + "<br/>Your created by our mentor ";
+
+            mail.Body = Body;
+            mail.IsBodyHtml = true;
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp-mail.outlook.com";
+            smtp.Port = 587;
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new System.Net.NetworkCredential("19-40116-1@student.aiub.edu", "aleX@monaf 32");
+            smtp.EnableSsl = true;
+            smtp.Send(mail);
             return true;
 
         }

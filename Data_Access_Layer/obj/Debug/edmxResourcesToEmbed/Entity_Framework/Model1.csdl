@@ -700,6 +700,7 @@
     </AssociationSet>
     <EntitySet Name="InstitutionTokens" EntityType="Education_Platform_Final_TermModel.InstitutionToken" />
     <EntitySet Name="MentorTokens" EntityType="Education_Platform_Final_TermModel.MentorToken" />
+    <EntitySet Name="Tokens" EntityType="Education_Platform_Final_TermModel.Token" />
   </EntityContainer>
   <EntityType Name="AdminToken">
     <Key>
@@ -742,5 +743,15 @@
     <Property Name="Createdat" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="Expiredat" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="Token" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Token">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="TokenKey" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+    <Property Name="ExpiredAt" Type="DateTime" Precision="3" />
   </EntityType>
 </Schema>

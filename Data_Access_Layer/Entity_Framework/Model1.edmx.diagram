@@ -52,6 +52,7 @@
         <AssociationConnector Association="Education_Platform_Final_TermModel.FK_Transactions_Institutions1" />
         <EntityTypeShape EntityType="Education_Platform_Final_TermModel.InstitutionToken" Width="1.5" PointX="0.75" PointY="6.75" />
         <EntityTypeShape EntityType="Education_Platform_Final_TermModel.MentorToken" Width="1.5" PointX="2.75" PointY="6.75" />
+        <EntityTypeShape EntityType="Education_Platform_Final_TermModel.Token" Width="1.5" PointX="7.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

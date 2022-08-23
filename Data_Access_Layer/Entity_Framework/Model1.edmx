@@ -220,6 +220,16 @@
           <Property Name="IsValid" Type="varchar(max)" />
           <Property Name="Gender" Type="varchar(max)" />
         </EntityType>
+        <EntityType Name="Token">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="TokenKey" Type="varchar(max)" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="ExpiredAt" Type="datetime" />
+        </EntityType>
         <EntityType Name="Transactions">
           <Key>
             <PropertyRef Name="Id" />
@@ -571,6 +581,7 @@
           <EntitySet Name="Results" EntityType="Self.Results" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reviewstudents" EntityType="Self.Reviewstudents" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Token" EntityType="Self.Token" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Transactions" EntityType="Self.Transactions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ValidStudents" EntityType="Self.ValidStudents" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_AnswerScripts_Assignments" Association="Self.FK_AnswerScripts_Assignments">
@@ -1382,6 +1393,7 @@
           </AssociationSet>
           <EntitySet Name="InstitutionTokens" EntityType="Education_Platform_Final_TermModel.InstitutionToken" />
           <EntitySet Name="MentorTokens" EntityType="Education_Platform_Final_TermModel.MentorToken" />
+          <EntitySet Name="Tokens" EntityType="Education_Platform_Final_TermModel.Token" />
         </EntityContainer>
         <EntityType Name="AdminToken">
           <Key>
@@ -1424,6 +1436,16 @@
           <Property Name="Createdat" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Expiredat" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Token" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Token">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="TokenKey" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="ExpiredAt" Type="DateTime" Precision="3" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1682,6 +1704,17 @@
                 <ScalarProperty Name="Expiredat" ColumnName="Expiredat" />
                 <ScalarProperty Name="Createdat" ColumnName="Createdat" />
                 <ScalarProperty Name="MentorId" ColumnName="MentorId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tokens">
+            <EntityTypeMapping TypeName="Education_Platform_Final_TermModel.Token">
+              <MappingFragment StoreEntitySet="Token">
+                <ScalarProperty Name="ExpiredAt" ColumnName="ExpiredAt" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="TokenKey" ColumnName="TokenKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

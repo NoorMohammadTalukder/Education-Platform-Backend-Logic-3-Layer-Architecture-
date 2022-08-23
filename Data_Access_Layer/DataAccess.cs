@@ -120,5 +120,44 @@ namespace Data_Access_Layer
         {
             return new MentorTokenRepo(db);
         }
+
+        //-------------------------------------------------
+        public static IRepoS<Student, int, bool> SGetStudentDataAccess()
+        {
+
+            return new student(db);
+        }
+        public static IRepoS<Counseling, int, bool> SGetCounselingDataAccess()
+        {
+
+            return new SCounselingRepo(db);
+        }
+        public static IRepoS<Transaction, int, bool> SGetTransactionDataAccess()
+        {
+
+            return new STransactionRepo(db);
+        }
+        public static IRepoS<CourseModule, int, bool> SGetCourseModuleDataAccess()
+        {
+
+            return new SCourseM(db);
+        }
+        public static IRepoS<Cours, int, bool> SGetCourseDataAccess()
+        {
+
+            return new ScourseRepo(db);
+        }
+        public static IRepoS<Token, string, Token> SGetTokenDataAccess()
+        {
+            return new STokenRepo(db);
+        }
+        public static IRepoS<Student, string, bool> SGetUserDataAccess()
+        {
+            return new SUserRepo(db);
+        }
+        public static IAuth<Student> SGetAuthDataAccess()
+        {
+            return new SUserRepo(db);
+        }
     }
 }

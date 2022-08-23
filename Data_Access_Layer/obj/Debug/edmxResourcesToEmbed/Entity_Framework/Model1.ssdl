@@ -215,6 +215,16 @@
     <Property Name="IsValid" Type="varchar(max)" />
     <Property Name="Gender" Type="varchar(max)" />
   </EntityType>
+  <EntityType Name="Token">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="TokenKey" Type="varchar(max)" />
+    <Property Name="CreatedAt" Type="datetime" />
+    <Property Name="ExpiredAt" Type="datetime" />
+  </EntityType>
   <EntityType Name="Transactions">
     <Key>
       <PropertyRef Name="Id" />
@@ -566,6 +576,7 @@
     <EntitySet Name="Results" EntityType="Self.Results" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Reviewstudents" EntityType="Self.Reviewstudents" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Token" EntityType="Self.Token" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Transactions" EntityType="Self.Transactions" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ValidStudents" EntityType="Self.ValidStudents" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_AnswerScripts_Assignments" Association="Self.FK_AnswerScripts_Assignments">

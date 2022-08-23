@@ -11,47 +11,31 @@ using System.Web.Http.Cors;
 namespace Education_Platform_Backend_Logic.Controllers
 {
     [EnableCors("*", "*", "*")]
-    public class StudentController : ApiController
+    public class studentController : ApiController
     {
-     
-        [Route("api/student/{id}")]
+        [Route("api/student")]
         [HttpGet]
-        public HttpResponseMessage GetStudentonly(int id)
+        public HttpResponseMessage Get()
         {
-            var data = StudentService.SingleStudent(id);
+            var data = studentService.Get();
             return Request.CreateResponse(HttpStatusCode.OK, data);
 
         }
-
-
-        [Route("api/createstudent")]
+        [Route("api/student/create")]
         [HttpPost]
-        public HttpResponseMessage StudentCreate(StudentModel obj)
+        public HttpResponseMessage Create(StudentModel st)
         {
-            var data = StudentService.StudentCreate(obj);
-            return Request.CreateResponse(HttpStatusCode.OK, data);
-
+            var data = studentService.Create(st);
+            return Request.CreateResponse(HttpStatusCode.OK, "CREATED");
         }
 
-
-        [Route("api/updatestudent")]
-        [HttpPost]
-        public HttpResponseMessage StudentUpdate(StudentModel obj)
+        [Route("api/user/{id}")]
+        [HttpGet]
+        public HttpResponseMessage Delete(int id)
         {
-            var data = StudentService.UpdateStudent(obj);
-            return Request.CreateResponse(HttpStatusCode.OK, data);
 
+            var data = studentService.Delete(id);
+            return Request.CreateResponse(HttpStatusCode.OK, "DELETED");
         }
-
-
-        [Route("api/deletestudent/{id}")]
-        [HttpPost]
-        public HttpResponseMessage StudentDelete(int id)
-        {
-            var data = StudentService.DeleteStudent(id);
-            return Request.CreateResponse(HttpStatusCode.OK, data);
-
-        }
-       
     }
 }

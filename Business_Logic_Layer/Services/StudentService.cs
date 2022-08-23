@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Business_Logic_Layer.BOs;
+﻿using Business_Logic_Layer.BOs;
 using Data_Access_Layer;
 using Data_Access_Layer.Entity_Framework;
 using System;
@@ -10,39 +9,66 @@ using System.Threading.Tasks;
 
 namespace Business_Logic_Layer.Services
 {
-    public class StudentService
+    public class studentService
     {
-        public static bool StudentCreate(StudentModel obj)
+        public static List<StudentModel> Get()
         {
-            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<StudentModel, Student>())).Map<Student>(obj);
-            
-                DataAccess.GetStudentDataAccess().Create(data);
-                return true;
-          
+            var data = DataAccess.GetStudentDataAccess().Get();
+            var rdata = new List<StudentModel>();
+            foreach (var item in data)
+            {
+                rdata.Add(new StudentModel()
+                {
+                    Id = item.Id,
+                    Name = item.Name,
+                    Address = item.Address,
+                    Email = item.Email,
+                    Phone = item.Phone,
+                    Education = item.Education,
+                    Password = item.Password,
+                    Institution = item.Institution,
+                    IsValid = item.IsValid,
+                    Gender = item.Gender
+                });
+            }
+            return rdata;
         }
+        public static List<Student> GetVarStudentCount(int count)
+        {
+            return DataAccess.GetStudentDataAccess().Get().Take(count).ToList();
+        }
+        //public static studentModel GetUser(int id)
+        //{
+        //    var item = DataAccess.GetStudentDataAccess().Get(id);
 
-        public static StudentModel SingleStudent(int id)
+        //    var d = new studentModel() { id = item.id, name = item.name, email = item.email, user_id = item.user_id, password = item.password, rules = item.rules, status = item.status, img = item.img };
+        //    return d;
+        //}
+        public static bool Create(StudentModel item)
         {
-            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<Student, StudentModel>())).Map<StudentModel>(DataAccess.GetStudentDataAccess().GetId(id));
-            return data;
+            var student = new Student()
+            {
+                Id = item.Id,
+                Name = item.Name,
+                Address = item.Address,
+                Email = item.Email,
+                Phone = item.Phone,
+                Education = item.Education,
+                Password = item.Password,
+                Institution = item.Institution,
+                IsValid = item.IsValid,
+                Gender = item.Gender
 
+            };
+            return DataAccess.GetStudentDataAccess().Create(student);
         }
-        public static bool DeleteStudent(int id)
+        public static bool Update(Student student)
         {
-            
-                DataAccess.GetStudentDataAccess().Delete(id);
-                return true;
-           
-          
+            return DataAccess.GetStudentDataAccess().Update(student);
         }
-        public static bool UpdateStudent(StudentModel obj)
+        public static bool Delete(int id)
         {
-            var data = new Mapper(new MapperConfiguration(cfg => cfg.CreateMap<StudentModel, Student>())).Map<Student>(obj);
-            
-                DataAccess.GetStudentDataAccess().Update(data);
-                return true;
-            
-           
+            return DataAccess.GetStudentDataAccess().Delete(id);
         }
     }
 }

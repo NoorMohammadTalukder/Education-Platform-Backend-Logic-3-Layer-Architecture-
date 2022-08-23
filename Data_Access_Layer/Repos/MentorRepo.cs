@@ -20,6 +20,32 @@ namespace Data_Access_Layer.Repos
         {
             db.Mentors.Add(obj);
             db.SaveChanges();
+
+
+            MailMessage mail = new MailMessage();
+            mail.To.Add(obj.Email);
+            mail.From = new MailAddress("19-40135-1@student.aiub.edu");
+            mail.Subject = "Profile created in ABC Education";
+            string Body = "Congratulations!! <br/>" +
+                           "Your profile has been added <br/>" +
+                           "Your email:" + obj.Email + "<br/>" +
+                           "Your password:" + obj.Password + "<br/>" +
+                           "Please use this email and password to login" + "<br/>" +
+                           "<br/>" +
+                           "<b>Best Wishes</b><br/>" 
+
+                           ;
+
+            mail.Body = Body;
+            mail.IsBodyHtml = true;
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp-mail.outlook.com";
+            smtp.Port = 587;
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new System.Net.NetworkCredential("19-40135-1@student.aiub.edu", "Honest9016*"); // Enter seders User name and password
+            smtp.EnableSsl = true;
+            smtp.Send(mail);
+
             return true;
         }
 

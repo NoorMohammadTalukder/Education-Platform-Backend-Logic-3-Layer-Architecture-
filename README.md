@@ -1,5 +1,6 @@
 # Education-Platform-Backend-Logic-3-Layer-Architecture-
-This is the backend part of Educational Platform project using ASP.NET. This backend part consist 3 tier architecture, SOLID and APIs. The educational platform is a web app where an educational institution can register and offer new courses to students and students can purchase them for enhance his skills. 
+This is the backend part of Educational Platform project using ASP.NET. This backend part consist 3 tier architecture, SOLID and APIs. The educational platform is a web app where an educational institution can register and offer new courses to students and students can purchase them for enhance his skills.There is to total four users (Admin, Institution, Mentor and Student) in the application. I have developed the Admin user part.
+<h3>Simulation Link: https://drive.google.com/file/d/1VFF2bCymszRAqM_lPz_SLmEtqHvyWKPJ/view?usp=sharing</h3>
 <br><b>Key Features of Admin: <b>
 <ul>
 <li>Approve Institution after registration </li>
